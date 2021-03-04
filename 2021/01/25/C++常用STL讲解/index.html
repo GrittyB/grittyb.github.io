@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="text, 泡沫">
+    <meta name="keywords" content="C++常用STL讲解, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>text | 泡沫</title>
+    <title>C++常用STL讲解 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">text</h1>
+                    <h1 class="description center-align post-title">C++常用STL讲解</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-20
+                    2021-01-25
                 </div>
                 
 
@@ -471,8 +471,182 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a>TEST</h1><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">cout&lt;&lt;&quot;测试一下&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>简单的测试</p>
+                <blockquote>
+<h3 id="STL-是个啥？"><a href="#STL-是个啥？" class="headerlink" title="STL 是个啥？"></a>STL 是个啥？</h3><p>STL（Standard Template Library），也被称为标准模板库，包含大 量的模板类和模板函数，是C++提供的一个由一些容器、算法和 其他一些组件组成的集合。用于完成诸如输入/输出、数学计算等 功能。</p>
+</blockquote>
+<h3 id="C-一些基本知识"><a href="#C-一些基本知识" class="headerlink" title="C++一些基本知识"></a>C++一些基本知识</h3><h4 id="C-中的引用"><a href="#C-中的引用" class="headerlink" title="C++中的引用"></a>C++中的引用</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void swap(int &amp;a, int &amp;b)
+&#123;
+    int c &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; c;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="字符串（string）"><a href="#字符串（string）" class="headerlink" title="字符串（string）"></a>字符串（string）</h4><p><strong>创建</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">stirng s
+string s &#x3D; &quot;hello world&quot;; 
+string s(int n,char c); &#x2F;&#x2F;创建一个string,由n个c组成 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>读入</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">cin&gt;&gt;s;&#x2F;&#x2F;遇到&#39;空格&#39;或者&#39;回车‘停止，原内容会被新数据取代
+getline(cin,s);&#x2F;&#x2F;会读入&#39;空格&#39;，遇到&#39;回车&#39;停止<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>cin,getline与getchar,gets相比，不用担心缓冲区</p>
+</blockquote>
+<p><strong>输出</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">cout&lt;&lt;s;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>运算</strong></p>
+<ul>
+<li>赋值运算 <u>s1=s2</u></li>
+<li>比较运算 <u>s1==s2</u></li>
+<li>连接运算 <u>s1+=s2</u></li>
+<li>**s[index]**类似于字符数组</li>
+<li>**s.substr(p,n)**返回字符串 </li>
+<li>s.length()返回字符串的长度</li>
+<li>​     删除，插入，查找…..</li>
+</ul>
+<blockquote>
+<p>s.empty()判断s是否为空，空返回1，不空返回0，O(1)<br>s.erase(p0,len) 删除s中从p0开始的len个字符，如果len省略就删到底O(n)<br>s.erase(s.begin()+i) 删除下标为i个字符 O(n)<br>s1.insert(p0,s2,pos,len) 后两个参数截取s2，可以省略 O(n)<br>s.insert(p0,n,c) 在p0处插入n个字符c O(n)<br>s1.replace(p0,len0,s2,pos,len) 删除p0开始的len0个字符，然后在p0处插入串s2中从pos开始的len个字符，后两个参数可以省略 O(n)<br>s1.find(s2,pos) 从前往后，查找成功时返回第一次出现的下标，失败返回string::npos的值 (-1) O(n<em>m)<br>s1.rfind(s2,pos) 从pos开始从后向前查找字符串s2中字符串在当前串后边第一次出现的下标 O(n</em>m)</p>
+</blockquote>
+<h4 id="动态数组（vector）"><a href="#动态数组（vector）" class="headerlink" title="动态数组（vector）"></a>动态数组（vector）</h4><p>在头⽂件 vector ⾥⾯，也在命名空间 std ⾥⾯，</p>
+<p>所以使⽤的时候要引⼊头⽂ 件 #include<vector>  和 using namespace std;</p>
+<blockquote>
+<p>vector<type>v 创建动态数组v，后面可以加{}或()进行初始化<br>type v[index] 获取v中第 index 个元素 O(1)<br>v.push_back(type item) 向v后⾯添加⼀个元素item O(1)<br>v.pop_back() 删除 v 最后⼀个元素 O(1)<br>v.size() 获取 v 中元素个数，返回size_type类型 O(1)<br>v.resize(int n) 把 v 的⻓度设定为 n 个元素 O(n)<br>v.empty() 判断 v 是否为空，空返回1，不空返回0，O(1)<br>v.clear() 清空 v 中的元素 O(size)<br>v.insert(iterator it,type x)向迭代器it指向元素前增加一个元素x,O(n)<br>v.erase(iterator it) 删除向量中迭代器指向元素,O(n)<br>v.front()返回首元素的引用O(1)<br>v.back()返回尾元素的引用O(1)<br>v.begin()返回首迭代器，指向第一个元素O(1)<br>v.end()返回尾迭代器，指向向量最后一个元素的下一个位置O(1)</p>
+</blockquote>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;vector的创建
+#include &lt;bits&#x2F;stdc++.h&gt;    &#x2F;&#x2F; #include &lt;vector&gt;
+using namespace std;
+int main()
+&#123;
+    vector&lt;int&gt;v1;
+    &#x2F;&#x2F;创建一个存int类型的动态数组，int可以改成其它类型
+    vector&lt;double&gt;v2&#123;1,1,2,3,5,8&#125;;
+    &#x2F;&#x2F;创建一个存double类型的动态数组，长度为6，1 1 2 3 5 8分别存在v[0]~v[5]
+    vector&lt;long long&gt;v3(20);
+    &#x2F;&#x2F;创建一个存long long类型的动态数组，长度为20，v[0]~v[19]默认为0
+    vector&lt;string&gt;v4(20,&quot;zzuacm&quot;);
+    &#x2F;&#x2F;创建一个存string类型的动态数组，长度为20，存的都是&quot;zzuacm&quot;
+    vector&lt;int&gt;v5[3];
+    &#x2F;&#x2F;相当于存int的二维数组，一共3行，每行的列可变
+    vector&lt;vector&lt;int&gt; &gt;v5&#123;&#123;1,2&#125;,&#123;1&#125;,&#123;1,2,3&#125;&#125;;
+    &#x2F;&#x2F;存int的二维数组，行和列都可变，初始状态
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()  &#x2F;&#x2F;vector基本操作
+&#123;
+    vector&lt;int&gt;v;
+    for(int i&#x3D;1;i&lt;&#x3D;5;i++)
+        v.push_back(i);&#x2F;&#x2F;向动态数组中插入1~5
+    cout&lt;&lt;v.size()&lt;&lt;endl;&#x2F;&#x2F;输出数组的大小，有几个值
+    for(int i&#x3D;0;i&lt;5;i++)
+        cout&lt;&lt;v[i]&lt;&lt;&quot; &quot;;&#x2F;&#x2F;输出v[0]~v[4]，也就是1~5
+    cout&lt;&lt;endl;
+    v.clear();&#x2F;&#x2F;将v清空，此时size为0
+    v.resize(10);&#x2F;&#x2F;为v重新开辟大小为10的空间，初始为0
+    for(int i&#x3D;0;i&lt;v.size();i++)
+        cout&lt;&lt;v[i]&lt;&lt;&quot; &quot;;&#x2F;&#x2F;遍历每一个元素
+    while(!v.empty())&#x2F;&#x2F;当v还不空的话，去掉v的最后一个元素，等同于v.clear();
+        v.pop_back();
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main() &#x2F;&#x2F;vector 插入，删除，遍历
+&#123;
+    vector&lt;int&gt;v&#123;0,1,2,3,4&#125;;
+    v.erase(v.begin()+3);&#x2F;&#x2F;删除v[3]，v变为&#123;0,1,2,4&#125;
+    v.insert(v.begin()+3,666);&#x2F;&#x2F;在v[3]前加上666，v变成&#123;0,1,2,666,4&#125;
+    v.front()&#x3D;10;&#x2F;&#x2F;将v[0]改成10，等同于v[0]&#x3D;10;
+    v.back()&#x3D;20;&#x2F;&#x2F;将v[4]改成20等同于v[v.size()-1]&#x3D;20;
+    for(int i&#x3D;0;i&lt;v.size();i++)
+        cout&lt;&lt;v[i]&lt;&lt;&quot; &quot;;&#x2F;&#x2F;使用下标访问的方法遍历v
+    cout&lt;&lt;endl;
+    for(auto i&#x3D;v.begin();i!&#x3D;v.end();i++)
+        cout&lt;&lt;*i&lt;&lt;&quot; &quot;;&#x2F;&#x2F;使用迭代器，从v.begin()到v.end()-1
+    cout&lt;&lt;endl;
+    for(auto i:v)&#x2F;&#x2F;使用C++11新特性循环遍历v，如果需要改变i的值，还需要在前面加上&amp;
+        cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>关于迭代器（iterator）</em></p>
+<blockquote>
+<p>vector<int>::iterator it=v.begin();<br>等价于 auto it=v.begin();</p>
+<p>在这⾥ it 类似于⼀个指针，指向 v 的第⼀个元素<br>it 等价于 &amp;v[0]<br>*it 等价于 v[0]<br>it 也可以进⾏加减操作，例如 it + 3 指向第四个元素<br>it++ 后it指向的就是v的第二个元素(v[1])了</p>
+</blockquote>
+<h4 id="队列（queue）"><a href="#队列（queue）" class="headerlink" title="队列（queue）"></a>队列（queue）</h4><p><em>queue只能在容器的末尾添加新元素，只能从头部移除元素。</em></p>
+<p><em>队列属于基础的数据结构</em></p>
+<p><strong>创建方法：</strong><br>queue<type>q; 建立一个存放数据类型为type的队列q<br><strong>使用方法：</strong><br>▸ q.push(item)：在 q 的最后添加⼀个type类型元素item O(1)<br>▸ q.pop()：使 q 最前⾯的元素出队 O(1)<br>▸ q.front()：获取 q 最前⾯的元素 O(1)<br>▸ q.size()：获取 q 中元素个数 O(1)<br>▸ q.empty()：判断 q 是否为空，空返回1，不空返回0 O(1)</p>
+<h4 id="优先队列（priority-queue）"><a href="#优先队列（priority-queue）" class="headerlink" title="优先队列（priority_queue）"></a>优先队列（priority_queue）</h4><p><em>priority_queue中出队顺序与插⼊顺序⽆关，与数据优先级有关，本质是一个堆</em></p>
+<p><strong>创建方法：</strong><br>priority_queue&lt;Type, Container, Functional&gt;<br>// Type：数据类型<br>// Container：存放数据的容器，默认⽤的是 vector<br>// Functional：元素之间的⽐较⽅法，当type可以比较时后两个可以省略</p>
+<blockquote>
+<ol>
+<li><p><em>//升序队列，小顶堆</em></p>
+<p>priority_queue &lt;int,vector<int>,greater<int> &gt; q;</p>
+</li>
+<li><p><em>//降序队列，大顶堆</em>  </p>
+<p>priority_queue &lt;int,vector<int>,less<int> &gt;q;</p>
+<p><strong><em>省略参数，默认大顶堆</em></strong></p>
+<p><strong><em>注意最后<del>&gt;&gt;</del>是&gt; &gt;,中间要有空格</em></strong></p>
+</li>
+</ol>
+</blockquote>
+<p><strong>使用方法</strong><br>▸ pq.push(item)：在 pq 中添加⼀个元素 O(logn)<br>▸ pq.top()：获取 pq <del>最大</del><strong>顶端</strong>的元素O(1)<br>▸ pq.pop()：使 pq 中<del>最大</del><strong>顶端</strong>的元素出队 O(logn)<br>▸ pq.size()：获取 pq 中元素个数 O(1)<br>▸ pq.empty()：判断 pq 是否为空 O(1)</p>
+<h4 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h4><p><em>栈也属于基础的数据结构，类似于队列，但是后进先出，可以想成洗盘子</em></p>
+<p><strong><em>访问顶端元素的时候要注意是否为空，不然会产生段错误</em></strong></p>
+<p><strong><em>栈满的时候要考虑上溢的情况，栈空的时候要考虑下溢的情况</em></strong></p>
+<p><strong><em>在栈空的情况下，不能做退栈运算，否则产生下溢。</em></strong></p>
+<h4 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h4><h4 id="映射（map）"><a href="#映射（map）" class="headerlink" title="映射（map）"></a>映射（map）</h4><h4 id="二进制有序集合（bitset"><a href="#二进制有序集合（bitset" class="headerlink" title="二进制有序集合（bitset)"></a>二进制有序集合（bitset)</h4><h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><p>▸ max(val1, val2)：返回更⼤的数<br>▸ min(val1, val2)：返回更⼩的数<br>▸ swap(type, type)：交换两者的值，可以是两个值也可以是两个STL的容器</p>
+<p><strong>排序函数</strong></p>
+<p>sort(first, last, compare)<br>▸ first：排序起始位置（指针或 iterator）<br>▸ last：排序终⽌位置（指针或 iterator），即最后一个元素的后一个位置<br>▸ compare：⽐较⽅式，可以省略，省略时默认按升序排序，如果排序的元素没有定义比较运算（如结构体），必须有compare<br>▸ sort 排序的范围是 [first, last)，时间为 O(nlogn)     <strong><em>底层是快排</em></strong></p>
+<p><em>例子</em></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+bool cmp(int a,int b)&#123;return a&gt;b;&#125;
+int main()
+&#123;
+    int arr[]&#x3D;&#123;3,2,5,1,4&#125;;
+    sort(arr,arr+5);&#x2F;&#x2F;sort(arr,arr+5,less&lt;int&gt;());
+    &#x2F;&#x2F;以下三种写法相同，都是倒叙排列
+    sort(arr,arr+5,greater&lt;int&gt;());
+    sort(arr,arr+5,cmp);
+    sort(arr,arr+5,[](int a,int b)&#123;return a&gt;b;&#125;);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>**去重函数（unique） **</p>
+<p>unique(first, last)：<br>▸ [first, last)范围内的值必须是一开始就提前排好序的<br>▸ 移除 [first, last) 内连续重复项<br>▸ 去重之后的返回最后一个元素的下一个地址（迭代器）</p>
+<p><em>例子</em></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+int main()
+&#123;
+    int arr[]&#x3D;&#123;3,2,2,1,2&#125;,n;
+    sort(arr,arr+5);&#x2F;&#x2F;需要先排序
+    n&#x3D;unique(arr,arr+5)-arr;&#x2F;&#x2F;n是去重后的元素个数
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>**二分函数（lower_bound/upper_bound） **</p>
+<p>lower_bound(first, last, value)<br>▸ first：查找起始位置（指针或 iterator）<br>▸ last：查找终⽌位置（指针或 iterator）<br>▸ value：查找的值<br>▸ lower_bound 查找的范围是 [first, last)，返回的是序列中第⼀个大于等于 value 的元素的位置，时间为 O(logn)<br>▸ [first, last)范围内的序列必须是提前排好序的，不然会错<br>▸ 如果序列内所有元素都⽐ value ⼩，则返回lastupper_bound(first, last, value)<br>▸ upper_bound 与 lower_bound 相似，唯⼀不同的地⽅在于upper_bound 查找的是序列中第⼀个⼤于 value 的元素</p>
+<p><em>例子</em></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()
+&#123;
+    int arr[]&#x3D;&#123;3,2,5,1,4&#125;;
+    sort(arr,arr+5);&#x2F;&#x2F;需要先排序
+    cout &lt;&lt; *lower_bound(arr,arr+5,3);&#x2F;&#x2F;输出数组中第一个大于等于3的值
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>**next_permutation **</p>
+<p>next_permutation(first, last)<br>用于求序列[first,last)元素全排列中一个排序的下一个排序</p>
+<p><em>例子</em></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+int main()
+&#123;
+    int a[3] &#x3D; &#123;0, 1, 2&#125;;
+    do
+    &#123;
+        for (int i &#x3D; 0; i &lt; 3; i++)
+            cout&lt;&lt;a[i]&lt;&lt;&#39; &#39;;
+        cout&lt;&lt;endl;
+    &#125;
+    while (next_permutation(a, a + 3));
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -499,7 +673,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/01/20/text/">http://example.com/2021/01/20/text/</a>
+                    <a href="http://example.com/2021/01/25/C++%E5%B8%B8%E7%94%A8STL%E8%AE%B2%E8%A7%A3/">http://example.com/2021/01/25/C++%E5%B8%B8%E7%94%A8STL%E8%AE%B2%E8%A7%A3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -714,13 +888,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/25/C++%E5%B8%B8%E7%94%A8STL%E8%AE%B2%E8%A7%A3/">
+                <a href="/2021/02/07/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%9C%AC%E8%B4%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="C++常用STL讲解">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="线性代数本质">
                         
-                        <span class="card-title">C++常用STL讲解</span>
+                        <span class="card-title">线性代数本质</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -731,7 +905,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
                         </span>
                         <span class="publish-author">
                             
@@ -744,8 +918,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-3Blue1Brown/">
+                        <span class="chip bg-color">线性代数 3Blue1Brown</span>
                     </a>
                     
                 </div>
@@ -756,7 +930,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/01/20/text/">
@@ -786,7 +960,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

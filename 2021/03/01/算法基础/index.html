@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="text, 泡沫">
+    <meta name="keywords" content="算法基础, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>text | 泡沫</title>
+    <title>算法基础 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">text</h1>
+                    <h1 class="description center-align post-title">算法基础</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-20
+                    2021-03-01
                 </div>
                 
 
@@ -471,8 +471,137 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a>TEST</h1><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">cout&lt;&lt;&quot;测试一下&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>简单的测试</p>
+                <blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270261438">https://zhuanlan.zhihu.com/p/270261438</a></p>
+</blockquote>
+<h3 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a><strong>深度优先遍历</strong>（DFS）</h3><p><strong><em>实现路径</em></strong></p>
+<p><img src="D:\Blog\source_posts\pic\v2-8a91c274eddc8ef5a586c95bc0dfdb8f_b.gif" alt="v2-8a91c274eddc8ef5a586c95bc0dfdb8f_b"></p>
+<p><strong><em>代码思路</em></strong></p>
+<pre class="line-numbers language-none"><code class="language-none">DFS（顶点v）
+&#123;
+  标记v为已遍历；
+  for（对于每一个邻接v且未标记遍历的点u）
+      DFS（u）;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;详细
+void dfs(now)&#123;&#x2F;&#x2F;递归参数（每一个点）    &#x2F;&#x2F;层数
+	if(now&#x3D;&#x3D;n)&#123;&#x2F;&#x2F;到达终点             &#x2F;&#x2F;到达最底层
+       	终点处操作（记录答案&#x2F;输出答案...）
+        return;
+    &#125;
+    if(剪枝条件)return;
+    for(枚举状态)&#123;       &#x2F;&#x2F;每层有多少情况
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong><em>树的表示</em></strong></p>
+<p><img src="D:\Blog\source_posts\pic\1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
+<p><em>如果把多种情况写成一个树的方式</em></p>
+<p><em>那么DFS的实质就是遍历所有分枝来寻找最优解</em></p>
+<p><em>而DFS中遍历所有解的方式采用了我们称之为回溯法的东西</em></p>
+<p><strong><em>几个经典代码</em></strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递归求全排列
+int a[3];
+int vis[3];
+void bfs(int now)&#123;
+	if(now&#x3D;&#x3D;4)&#123;
+		for (int i &#x3D; 0; i &lt; 3;i++)
+			cout &lt;&lt; a[i];
+		return;
+	&#125;
+	for (int i &#x3D; 1; i &lt;&#x3D; 3;i++)&#123;
+		if(vis[i])
+			continue;
+		a[now] &#x3D; i;
+		vis[i] &#x3D; 1;
+		bfs(now + 1);
+		vis[i] &#x3D; 0;
+	&#125;
+	return;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;八皇后
+int ans[10], vis[3][20];
+
+void dfs(int now) &#123;
+	if(now &#x3D;&#x3D; 9) &#123;
+		for(int i &#x3D; 1; i &lt;&#x3D; 8; i++)	cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
+		cout &lt;&lt; &quot;\n&quot;;
+		return;
+	&#125;
+	for(int i &#x3D; 1; i &lt;&#x3D; 8; i++) &#123;
+		if(vis[0][i] || vis[1][now + i] || vis[2][now - i + 8])	continue;
+		ans[now] &#x3D; i;
+		vis[0][i] &#x3D; 1; vis[1][now + i] &#x3D; 1; vis[2][now - i + 8] &#x3D; 1;
+		dfs(now + 1);
+		vis[0][i] &#x3D; 0; vis[1][now + i] &#x3D; 0; vis[2][now - i + 8] &#x3D; 0;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;迷宫问题
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+
+const int dx[4] &#x3D; &#123;0, 0, 1, -1&#125;, dy[4] &#x3D; &#123;1, -1, 0, 0&#125;;
+int n, m, t, sx, sy, fx, fy, ans &#x3D; 0;
+int mp[10][10] &#x3D; &#123;0&#125;, vis[10][10] &#x3D; &#123;0&#125;;
+
+void dfs(int nowx, int nowy) &#123;
+	if(nowx &#x3D;&#x3D; fx &amp;&amp; nowy &#x3D;&#x3D; fy) &#123;
+		ans++;
+		return;
+	&#125;
+	for(int i&#x3D;0;i&lt;4;i++) &#123;
+		int nx &#x3D; nowx + dx[i], ny &#x3D; nowy + dy[i];
+		if(nx &lt; 1 || nx &gt; n || ny &lt; 1 || ny &gt; m)	continue;
+		if(mp[nx][ny] || vis[nx][ny])	continue;
+		vis[nx][ny] &#x3D; 1;
+		dfs(nx, ny);
+		vis[nx][ny] &#x3D; 0;
+	&#125;
+&#125; 
+
+int main() &#123;
+	cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
+	cin &gt;&gt; sx &gt;&gt; sy &gt;&gt; fx &gt;&gt; fy;
+	while(t--) &#123;
+		int x, y; cin &gt;&gt; x &gt;&gt; y;
+		mp[x][y] &#x3D; 1;
+	&#125;
+	vis[sx][sy] &#x3D; 1; 
+	dfs(sx, sy);
+	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;; 
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p><img src="D:\Blog\source_posts\pic\v2-668c6da27a13e8212761540673ff1b82_b.gif" alt="v2-668c6da27a13e8212761540673ff1b82_b"></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;伪代码
+int n&#x3D;10,m&#x3D;10;
+void bfs()&#123;
+    queue que;
+    int graph[m][n];
+    int px[]&#x3D;&#123;1,-1,0,0&#125;;
+    int py[]&#x3D;&#123;0,0,1,-1&#125;;    
+    que.push(起点);
+    while(!que.empty())&#123;
+        auto temp&#x3D;que.front();&#x2F;&#x2F;得到队列中的元素
+        &#x2F;&#x2F;if(结束条件)
+        for(int i&#x3D;0;i!&#x3D;4;++i)&#123;
+            定义移动后的格子
+            if(&#x2F;&#x2F;可以走)     
+    &#x2F;&#x2F;没背标记过&amp;&amp;没有遇到障碍物（地图中标为1，因为从g[1][1]读，不用担心越界，默认标记为0）
+                
+               
+                &#x2F;&#x2F;标记当前格子
+                &#x2F;&#x2F;将当前状态入列，等待下次提取
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p><img src="D:\Blog\source_posts\pic\bfs.gif" alt="bfs"><img src="D:\Blog\source_posts\pic\dfs.gif" alt="dfs"></p>
 
                 
             </div>
@@ -499,7 +628,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/01/20/text/">http://example.com/2021/01/20/text/</a>
+                    <a href="http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +666,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -710,62 +839,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/01/25/C++%E5%B8%B8%E7%94%A8STL%E8%AE%B2%E8%A7%A3/">
+                <a href="/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="C++常用STL讲解">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="算法基础">
                         
-                        <span class="card-title">C++常用STL讲解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            GrittyB
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/01/20/text/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="text">
-                        
-                        <span class="card-title">text</span>
+                        <span class="card-title">算法基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -776,7 +861,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
                             </span>
                         <span class="publish-author">
                             
@@ -790,8 +875,53 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="洛谷题单-字符串">
+                        
+                        <span class="card-title">洛谷题单-字符串</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            GrittyB
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B4%9B%E8%B0%B7%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">洛谷，字符串</span>
                     </a>
                     
                 </div>
