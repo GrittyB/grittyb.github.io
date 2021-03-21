@@ -476,7 +476,7 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270261438">https://zhuanlan.zhihu.com/p/270261438</a></p>
 </blockquote>
 <h3 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a><strong>深度优先遍历</strong>（DFS）</h3><p><strong><em>实现路径</em></strong></p>
-<p><img src="D:\Blog\source_posts\pic\v2-8a91c274eddc8ef5a586c95bc0dfdb8f_b.gif" alt="v2-8a91c274eddc8ef5a586c95bc0dfdb8f_b"></p>
+<p>![dfs tu](算法基础.assets/dfs tu-1616292931034.gif)</p>
 <p><strong><em>代码思路</em></strong></p>
 <pre class="line-numbers language-none"><code class="language-none">DFS（顶点v）
 &#123;
@@ -495,7 +495,7 @@ void dfs(now)&#123;&#x2F;&#x2F;递归参数（每一个点）    &#x2F;&#x2F;层
 	&#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong><em>树的表示</em></strong></p>
-<p><img src="D:\Blog\source_posts\pic\1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
+<p><img src="/.com//1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
 <p><em>如果把多种情况写成一个树的方式</em></p>
 <p><em>那么DFS的实质就是遍历所有分枝来寻找最优解</em></p>
 <p><em>而DFS中遍历所有解的方式采用了我们称之为回溯法的东西</em></p>
@@ -572,9 +572,11 @@ int main() &#123;
 	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;; 
 	return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>==关于回溯解释==</p>
+<img src="/.com//关于回溯.png" alt="关于回溯" style="zoom:67%;">
 
-
-<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p><img src="D:\Blog\source_posts\pic\v2-668c6da27a13e8212761540673ff1b82_b.gif" alt="v2-668c6da27a13e8212761540673ff1b82_b"></p>
+<p>在此图中，若每次标记完后，结束该路径不回溯，那么下次通过其他路径时，不会访问（如联通块染色问题，染过之后，不用重复染色），但是要想从不同的路径还能去访问此点，则需要回溯（如迷宫路线问题，全排列问题，八皇后问题）</p>
+<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p>![bfs tu](算法基础.assets/bfs tu.gif)</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;伪代码
 int n&#x3D;10,m&#x3D;10;
 void bfs()&#123;
@@ -601,7 +603,10 @@ void bfs()&#123;
 
 
 
-<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p><img src="D:\Blog\source_posts\pic\bfs.gif" alt="bfs"><img src="D:\Blog\source_posts\pic\dfs.gif" alt="dfs"></p>
+<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p>==DFS==</p>
+<p><img src="/.com//dfs.gif" alt="dfs"></p>
+<p>==BFS==</p>
+<p><img src="/.com//bfs.gif" alt="bfs"></p>
 
                 
             </div>
@@ -839,18 +844,17 @@ void bfs()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/03/15/t/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="算法基础">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="t">
                         
-                        <span class="card-title">算法基础</span>
+                        <span class="card-title">t</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -860,9 +864,9 @@ void bfs()&#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -870,15 +874,6 @@ void bfs()&#123;
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>
