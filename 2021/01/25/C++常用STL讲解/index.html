@@ -506,9 +506,9 @@ getline(cin,s);&#x2F;&#x2F;会读入&#39;空格&#39;，遇到&#39;回车&#39;停
 <p>s.empty()判断s是否为空，空返回1，不空返回0，O(1)<br>s.erase(p0,len) 删除s中从p0开始的len个字符，如果len省略就删到底O(n)<br>s.erase(s.begin()+i) 删除下标为i个字符 O(n)<br>s1.insert(p0,s2,pos,len) 后两个参数截取s2，可以省略 O(n)<br>s.insert(p0,n,c) 在p0处插入n个字符c O(n)<br>s1.replace(p0,len0,s2,pos,len) 删除p0开始的len0个字符，然后在p0处插入串s2中从pos开始的len个字符，后两个参数可以省略 O(n)<br>s1.find(s2,pos) 从前往后，查找成功时返回第一次出现的下标，失败返回string::npos的值 (-1) O(n<em>m)<br>s1.rfind(s2,pos) 从pos开始从后向前查找字符串s2中字符串在当前串后边第一次出现的下标 O(n</em>m)</p>
 </blockquote>
 <h4 id="动态数组（vector）"><a href="#动态数组（vector）" class="headerlink" title="动态数组（vector）"></a>动态数组（vector）</h4><p>在头⽂件 vector ⾥⾯，也在命名空间 std ⾥⾯，</p>
-<p>所以使⽤的时候要引⼊头⽂ 件 #include<vector>  和 using namespace std;</p>
+<p>所以使⽤的时候要引⼊头⽂ 件 #include<vector>  和 using namespace std;</vector></p>
 <blockquote>
-<p>vector<type>v 创建动态数组v，后面可以加{}或()进行初始化<br>type v[index] 获取v中第 index 个元素 O(1)<br>v.push_back(type item) 向v后⾯添加⼀个元素item O(1)<br>v.pop_back() 删除 v 最后⼀个元素 O(1)<br>v.size() 获取 v 中元素个数，返回size_type类型 O(1)<br>v.resize(int n) 把 v 的⻓度设定为 n 个元素 O(n)<br>v.empty() 判断 v 是否为空，空返回1，不空返回0，O(1)<br>v.clear() 清空 v 中的元素 O(size)<br>v.insert(iterator it,type x)向迭代器it指向元素前增加一个元素x,O(n)<br>v.erase(iterator it) 删除向量中迭代器指向元素,O(n)<br>v.front()返回首元素的引用O(1)<br>v.back()返回尾元素的引用O(1)<br>v.begin()返回首迭代器，指向第一个元素O(1)<br>v.end()返回尾迭代器，指向向量最后一个元素的下一个位置O(1)</p>
+<p>vector<type>v 创建动态数组v，后面可以加{}或()进行初始化<br>type v[index] 获取v中第 index 个元素 O(1)<br>v.push_back(type item) 向v后⾯添加⼀个元素item O(1)<br>v.pop_back() 删除 v 最后⼀个元素 O(1)<br>v.size() 获取 v 中元素个数，返回size_type类型 O(1)<br>v.resize(int n) 把 v 的⻓度设定为 n 个元素 O(n)<br>v.empty() 判断 v 是否为空，空返回1，不空返回0，O(1)<br>v.clear() 清空 v 中的元素 O(size)<br>v.insert(iterator it,type x)向迭代器it指向元素前增加一个元素x,O(n)<br>v.erase(iterator it) 删除向量中迭代器指向元素,O(n)<br>v.front()返回首元素的引用O(1)<br>v.back()返回尾元素的引用O(1)<br>v.begin()返回首迭代器，指向第一个元素O(1)<br>v.end()返回尾迭代器，指向向量最后一个元素的下一个位置O(1)</type></p>
 </blockquote>
 <pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;vector的创建
 #include &lt;bits&#x2F;stdc++.h&gt;    &#x2F;&#x2F; #include &lt;vector&gt;
@@ -566,21 +566,21 @@ int main()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>关于迭代器（iterator）</em></p>
 <blockquote>
-<p>vector<int>::iterator it=v.begin();<br>等价于 auto it=v.begin();</p>
+<p>vector<int>::iterator it=v.begin();<br>等价于 auto it=v.begin();</int></p>
 <p>在这⾥ it 类似于⼀个指针，指向 v 的第⼀个元素<br>it 等价于 &amp;v[0]<br>*it 等价于 v[0]<br>it 也可以进⾏加减操作，例如 it + 3 指向第四个元素<br>it++ 后it指向的就是v的第二个元素(v[1])了</p>
 </blockquote>
 <h4 id="队列（queue）"><a href="#队列（queue）" class="headerlink" title="队列（queue）"></a>队列（queue）</h4><p><em>queue只能在容器的末尾添加新元素，只能从头部移除元素。</em></p>
 <p><em>队列属于基础的数据结构</em></p>
-<p><strong>创建方法：</strong><br>queue<type>q; 建立一个存放数据类型为type的队列q<br><strong>使用方法：</strong><br>▸ q.push(item)：在 q 的最后添加⼀个type类型元素item O(1)<br>▸ q.pop()：使 q 最前⾯的元素出队 O(1)<br>▸ q.front()：获取 q 最前⾯的元素 O(1)<br>▸ q.size()：获取 q 中元素个数 O(1)<br>▸ q.empty()：判断 q 是否为空，空返回1，不空返回0 O(1)</p>
+<p><strong>创建方法：</strong><br>queue<type>q; 建立一个存放数据类型为type的队列q<br><strong>使用方法：</strong><br>▸ q.push(item)：在 q 的最后添加⼀个type类型元素item O(1)<br>▸ q.pop()：使 q 最前⾯的元素出队 O(1)<br>▸ q.front()：获取 q 最前⾯的元素 O(1)<br>▸ q.size()：获取 q 中元素个数 O(1)<br>▸ q.empty()：判断 q 是否为空，空返回1，不空返回0 O(1)</type></p>
 <h4 id="优先队列（priority-queue）"><a href="#优先队列（priority-queue）" class="headerlink" title="优先队列（priority_queue）"></a>优先队列（priority_queue）</h4><p><em>priority_queue中出队顺序与插⼊顺序⽆关，与数据优先级有关，本质是一个堆</em></p>
 <p><strong>创建方法：</strong><br>priority_queue&lt;Type, Container, Functional&gt;<br>// Type：数据类型<br>// Container：存放数据的容器，默认⽤的是 vector<br>// Functional：元素之间的⽐较⽅法，当type可以比较时后两个可以省略</p>
 <blockquote>
 <ol>
 <li><p><em>//升序队列，小顶堆</em></p>
-<p>priority_queue &lt;int,vector<int>,greater<int> &gt; q;</p>
+<p>priority_queue &lt;int,vector<int>,greater<int> &gt; q;</int></int></p>
 </li>
 <li><p><em>//降序队列，大顶堆</em>  </p>
-<p>priority_queue &lt;int,vector<int>,less<int> &gt;q;</p>
+<p>priority_queue &lt;int,vector<int>,less<int> &gt;q;</int></int></p>
 <p><strong><em>省略参数，默认大顶堆</em></strong></p>
 <p><strong><em>注意最后<del>&gt;&gt;</del>是&gt; &gt;,中间要有空格</em></strong></p>
 </li>
