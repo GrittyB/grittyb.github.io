@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法基础, 泡沫">
+    <meta name="keywords" content="EOF解析, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法基础 | 泡沫</title>
+    <title>EOF解析 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法基础</h1>
+                    <h1 class="description center-align post-title">EOF解析</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">-底层原理</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-01
+                    2021-03-29
                 </div>
                 
 
@@ -471,141 +471,115 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270261438">https://zhuanlan.zhihu.com/p/270261438</a></p>
-</blockquote>
-<h3 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a><strong>深度优先遍历</strong>（DFS）</h3><p><strong><em>实现路径</em></strong></p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs%20tu.gif" alt="dfs tu"></p>
-<p><strong><em>代码思路</em></strong></p>
-<pre class="line-numbers language-none"><code class="language-none">DFS（顶点v）
+                <p> C语言文件操作解析(五)之EOF解析</p>
+<p>​    在C语言中，有个符号大家都应该很熟悉，那就是EOF(End of File)，即文件结束符。但是很多时候对这个理解并不是很清楚，导致在写代码的时候经常出错，特别是在判断文件是否到达文件末尾时，常常出错。</p>
+<p>1.EOF是什么?</p>
+<p>  在VC中查看EOF的定义可知:</p>
+<p>  #define EOF   (-1)</p>
+<p>  EOF只是代表一个整形常量-1。因此很多人认为在文件的末尾存在这个结束标志EOF，这种观点是错误的。事实上在文件的末尾是不存在这个标志的。那么有人会问那下面的程序如何解释?</p>
+<pre class="line-numbers language-none"><code class="language-none">char ch;
+while((ch&#x3D;fgetc(fp))!&#x3D;EOF)
 &#123;
-  标记v为已遍历；
-  for（对于每一个邻接v且未标记遍历的点u）
-      DFS（u）;
+    printf(&quot;%c\n&quot;,ch);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  书上都通过这样的代码去判断是否读取到文本文件末尾，就是当读取到EOF的时候就结束操作。这种理解是错误的。</p>
+<p>  先看一下函数fgetc的原型：</p>
+<p>  int fgetc(FILE *fp);</p>
+<p> 事实上在fgetc函数内部，每次都是读取一个字节的数据，而且这一个字节的数据是以unsigned即无符号型处理的，然后将这一个字节的数据赋给一个int型变量作为返回值返回，因此无论从文件中读取的是什么数据，作为无符号型赋值给一个int型变量，返回值不可能是负数。比如当读取到数据0xFA时，因为是以无符号处理的，因此在将0xFA赋值给int型变量的时，int型变量的高位是填充0的(为什么填充0，跟汇编语言里面的符号扩展类似，在后面会提到)，因此返回的结果是0X00 00 00 FA，始终不会是负数.而若读取到文件末尾的时候，即没有数据可供读取的时候，那么返回EOF，即-1，这个-1是一个int型常量，二进制表示是0x FF FF FF FF。</p>
+<p>  上面的代码具有很大的局限性，因为其只能判断是否到达文本文件的末尾，而不能对二进制文件进行准确的判断。因为正常情况下，文本文件中无论如何是无法读取到-1(0x FF)这个数据，因此可以判断。但是对于二进制文件不同，很可能读到的一个字节的数据就是0xFF，那么返回值此时就是-1，但是此时还未到达文件末尾，造成错误的判断。</p>
+<p>  那么有没有办法解决？可以将ch定义为int型即可。</p>
+<p>  下面来比较一下下面这段程序和上面程序在执行时的区别。</p>
+<pre class="line-numbers language-none"><code class="language-none">int ch;
+while((ch&#x3D;fgetc(fp))!&#x3D;EOF)
+&#123;
+    printf(&quot;%c\n&quot;,ch);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>   假如在文件中读取到的数据是0xFA。</p>
+<p>  那么对于上面一段程序的执行过程是:</p>
+<p>  将0xFA先赋值给一个int型变量(假如是a)，那么此时a为0x 00 00 00 FA，当将返回值a返回给变量ch时，由于ch是char型的，只有8位，那么只将a的低8位赋给ch，那么此时ch为0x FA，而ch是作为有符号处理的，那么此时ch的值肯定是负数。</p>
+<p>  而若将ch定义为int型，执行过程为:</p>
+<p>  将0xFA先赋值给一个int型变量(假如是a)，那么此时a为0x 00 00 00 FA，当将返回值a返回给变量ch时，由于ch也是int型的，因此ch为0x 00 00 00 FA，是一个正数，两段程序执行得到的结果完全不同。</p>
+<p>  下面看一下若读取到的数据是0x FF(此时未到文件末尾)时，是什么结果。</p>
+<p>  若ch为char型，则当将返回值0x 00 00 00 FF返回时，取低8位赋给ch，那么此时ch为-1，此时会误判为到达文件末尾；</p>
+<p>  而若ch为int型，则当将返回值0x 00 00 00 FF返回时，ch的值为0x 00 00 00 FF，此时ch不为-1，不会误判为文件末尾。</p>
+<p>  (当然上面所述成立必须是在读取不出错的情况下才成立)</p>
+<p>  所以很多情况下会用到函数feof.</p>
+<p><strong>所以在读取字符串的时候,要讲其定义为int型，不然会出问题</strong></p>
+<p>二.feof</p>
+<p>  feof函数的原型是</p>
+<p>  int feof(FILE *fp);</p>
+<p>  若到达文件末尾则返回一个非零值，否则返回0。</p>
+<p>  在VC中查看feof函数的定义:</p>
+<p>  #define _IOEOF     0x0010</p>
+<p>  #define feof(_stream)   ((_stream)-&gt;_flag &amp; _IOEOF)</p>
+<p>  可知feof函数判断是否到达文件末尾时与_flag这个标志有关。</p>
+<p>  下面看一下这段程序:</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+int main(void)
+&#123;
+    FILE *fp;
+    int ch;
+    if((fp&#x3D;fopen(&quot;test.txt&quot;,&quot;w+&quot;))&#x3D;&#x3D;NULL)
+    &#123;
+        printf(&quot;can not open file\n&quot;);
+        exit(0);
+    &#125;
+    for(ch&#x3D;65;ch&lt;&#x3D;70;ch++)
+    &#123;
+        fputc(ch,fp);
+    &#125;
+    rewind(fp);
+    while(feof(fp)&#x3D;&#x3D;0)
+    &#123;
+        ch&#x3D;fgetc(fp);
+        printf(&quot;%0X\n&quot;,ch);
+    &#125;
+    fclose(fp);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>执行结果是:</p>
+<p>41<br>42<br>43<br>44<br>45<br>46<br>FFFFFFFF<br>Press any key to continue</p>
+<p>为什么最后打印结果会多打印一个FFFFFFFF？不是只往文件中写入了数据65-70么？</p>
+<p>先看一下C++ Reference中关于feof函数的描述(C++ Reference是一个比较好的网站，里面是关于C++所有库函数的描述，网址在博客首页的链接中有，<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/)%EF%BC%9A">http://www.cplusplus.com/reference/)：</a></p>
+<p>Checks whether the End-of-File indicator associated with <em>stream</em> is set, returning a value different from zero if it is.<br>This indicator is generally set by a previous operation on the <em>stream</em> that reached the End-of-File.</p>
+<p>从描述中可知，只有当与文件关联的流到达文件末尾时，此时若再进行读取操作，文件结束的标志(上面所述的_flag)才会被重新置位。</p>
+<p>因此在上述程序中，当读取完最后一个字节的数据后，文件结束标志并没有被置位，只有当位置指针到达末尾时，再发生读取操作时，而此时又没有数据可供读取，因此返回-1，所以打印出的结果中会多一个FFFFFFFF，在这之后才会将_flag重新置位，此时feof函数才能检测出已经到达了文件末尾。</p>
+<p>那么可以通过下面的办法解决这个问题:</p>
+<pre class="line-numbers language-none"><code class="language-none">ch&#x3D;fgetc(fp);
+while(feof(fp)&#x3D;&#x3D;0)
+&#123;
+    printf(&quot;%0X\n&quot;,ch);
+    ch&#x3D;fgetc(fp);
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;详细
-void dfs(now)&#123;&#x2F;&#x2F;递归参数（每一个点）    &#x2F;&#x2F;层数
-	if(now&#x3D;&#x3D;n)&#123;&#x2F;&#x2F;到达终点             &#x2F;&#x2F;到达最底层
-       	终点处操作（记录答案&#x2F;输出答案...）
-        return;
-    &#125;
-    if(剪枝条件)return;
-    for(枚举状态)&#123;       &#x2F;&#x2F;每层有多少情况
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong><em>树的表示</em></strong></p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
-<p><em>如果把多种情况写成一个树的方式</em></p>
-<p><em>那么DFS的实质就是遍历所有分枝来寻找最优解</em></p>
-<p><em>而DFS中遍历所有解的方式采用了我们称之为回溯法的东西</em></p>
-<p><strong><em>几个经典代码</em></strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递归求全排列
-int a[3];
-int vis[3];
-void dfs(int now)&#123;
-	if(now&#x3D;&#x3D;4)&#123;
-		for (int i &#x3D; 0; i &lt; 3;i++)
-			cout &lt;&lt; a[i];
-		return;
-	&#125;
-	for (int i &#x3D; 1; i &lt;&#x3D; 3;i++)&#123;
-		if(vis[i])
-			continue;
-		a[now] &#x3D; i;
-		vis[i] &#x3D; 1;
-		dfs(now + 1);
-		vis[i] &#x3D; 0;
-	&#125;
-	return;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;八皇后
-int ans[10], vis[3][20];
+<p>这样就不会多打印一个FFFFFFFF了。</p>
+<p>在上面提到汇编语言中符号扩展的问题，其实在C语言中属于数据类型转换的范畴。下面简要说明一下:</p>
+<p>符号扩展只针对将字长小的数据赋给字长大的数据时存在，若是字长大的数据赋给字长小的数据，取低位即可。</p>
+<p>下面看一段程序:</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;stdio.h&gt;
 
-void dfs(int now) &#123;
-	if(now &#x3D;&#x3D; 9) &#123;
-		for(int i &#x3D; 1; i &lt;&#x3D; 8; i++)	cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
-		cout &lt;&lt; &quot;\n&quot;;
-		return;
-	&#125;
-	for(int i &#x3D; 1; i &lt;&#x3D; 8; i++) &#123;
-		if(vis[0][i] || vis[1][now + i] || vis[2][now - i + 8])	continue;
-		ans[now] &#x3D; i;
-		vis[0][i] &#x3D; 1; vis[1][now + i] &#x3D; 1; vis[2][now - i + 8] &#x3D; 1;
-		dfs(now + 1);
-		vis[0][i] &#x3D; 0; vis[1][now + i] &#x3D; 0; vis[2][now - i + 8] &#x3D; 0;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;迷宫问题
-#include&lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
+int main(void)
+&#123;
+    unsigned char ch1&#x3D;0XFF;
+    char ch2&#x3D;0XFF;
+    char ch3&#x3D;0X73;
+    int a&#x3D;ch1;
+    int b&#x3D;ch2;
+    int c&#x3D;ch3;
+    printf(&quot;%d\n%d\n%d\n&quot;,a,b,c);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-const int dx[4] &#x3D; &#123;0, 0, 1, -1&#125;, dy[4] &#x3D; &#123;1, -1, 0, 0&#125;;
-int n, m, t, sx, sy, fx, fy, ans &#x3D; 0;
-int mp[10][10] &#x3D; &#123;0&#125;, vis[10][10] &#x3D; &#123;0&#125;;
-
-void dfs(int nowx, int nowy) &#123;
-	if(nowx &#x3D;&#x3D; fx &amp;&amp; nowy &#x3D;&#x3D; fy) &#123;
-		ans++;
-		return;
-	&#125;
-	for(int i&#x3D;0;i&lt;4;i++) &#123;
-		int nx &#x3D; nowx + dx[i], ny &#x3D; nowy + dy[i];
-		if(nx &lt; 1 || nx &gt; n || ny &lt; 1 || ny &gt; m)	continue;
-		if(mp[nx][ny] || vis[nx][ny])	continue;
-		vis[nx][ny] &#x3D; 1;
-		dfs(nx, ny);
-		vis[nx][ny] &#x3D; 0;
-	&#125;
-&#125; 
-
-int main() &#123;
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
-	cin &gt;&gt; sx &gt;&gt; sy &gt;&gt; fx &gt;&gt; fy;
-	while(t--) &#123;
-		int x, y; cin &gt;&gt; x &gt;&gt; y;
-		mp[x][y] &#x3D; 1;
-	&#125;
-	vis[sx][sy] &#x3D; 1; 
-	dfs(sx, sy);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;; 
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>==关于回溯解释==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/%E5%85%B3%E4%BA%8E%E5%9B%9E%E6%BA%AF.png" alt="关于回溯"></p>
-<p>在此图中，若每次标记完后，结束该路径不回溯，那么下次通过其他路径时，不会访问（如联通块染色问题，染过之后，不用重复染色），但是要想从不同的路径还能去访问此点，则需要回溯（如迷宫路线问题，全排列问题，八皇后问题）</p>
-<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs%20tu.gif" alt="bfs tu"></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;伪代码
-int n&#x3D;10,m&#x3D;10;
-void bfs()&#123;
-    queue que;
-    int graph[m][n];
-    int px[]&#x3D;&#123;1,-1,0,0&#125;;
-    int py[]&#x3D;&#123;0,0,1,-1&#125;;    
-    que.push(起点);
-    while(!que.empty())&#123;
-        auto temp&#x3D;que.front();&#x2F;&#x2F;得到队列中的元素
-        &#x2F;&#x2F;if(结束条件)
-        for(int i&#x3D;0;i!&#x3D;4;++i)&#123;
-            定义移动后的格子
-            if(&#x2F;&#x2F;可以走)     
-    &#x2F;&#x2F;没背标记过&amp;&amp;没有遇到障碍物（地图中标为1，因为从g[1][1]读，不用担心越界，默认标记为0）
-                
-               
-                &#x2F;&#x2F;标记当前格子
-                &#x2F;&#x2F;将当前状态入列，等待下次提取
-        &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p>==DFS==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs.gif" alt="dfs"></p>
-<p>==BFS==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs.gif" alt="bfs"></p>
+<p>执行结果为:</p>
+<p>255</p>
+<p>-1</p>
+<p>115</p>
+<p>原因是由于ch1、ch2、ch3都是char型变量，只占一个字节，区别在于ch1是无符号的，在将ch1赋值给a时，ch1是看做无符号数据进行处理的，那么在填充a的高位是用0去填充；而对于ch2和ch3都是有符号的，那么在填充高位时就要注意了，若ch2的最高位为0，那么表示ch2是正数，此时填充高位用0填充，而若ch2的最高位为1，则填充高位数据用1填充。</p>
+<p>如程序执行的结果所示，由于ch2的最高位为1，那么在填充b的高位的时候会用1去填充，那么b为0X FF FF FF FF；而ch3的最高位为0，那么填充c的高位用0填充，所以c的值为0x 00 00 00 73.</p>
+<p>—-引用自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dolphin0520/archive/2011/10/13/2210459.html">https://www.cnblogs.com/dolphin0520/archive/2011/10/13/2210459.html</a></p>
 
                 
             </div>
@@ -632,7 +606,7 @@ void bfs()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</a>
+                    <a href="http://example.com/2021/03/29/EOF%E8%A7%A3%E6%9E%90/">http://example.com/2021/03/29/EOF%E8%A7%A3%E6%9E%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -670,8 +644,8 @@ void bfs()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">-底层原理</span>
                                 </a>
                             
                         </div>
@@ -843,17 +817,18 @@ void bfs()&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/19/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+                <a href="/2021/03/29/EOF%E8%A7%A3%E6%9E%90/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="并查集">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="EOF解析">
                         
-                        <span class="card-title">并查集</span>
+                        <span class="card-title">EOF解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -863,9 +838,9 @@ void bfs()&#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -874,11 +849,12 @@ void bfs()&#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">-底层原理</span>
                     </a>
                     
                 </div>
@@ -892,13 +868,13 @@ void bfs()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                <a href="/2021/03/29/ZZUOJ/Day2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="洛谷题单-字符串">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">洛谷题单-字符串</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -909,7 +885,7 @@ void bfs()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
                             </span>
                         <span class="publish-author">
                             
@@ -918,18 +894,6 @@ void bfs()&#123;
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                        <span class="chip bg-color">洛谷</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
                 </div>
                 
             </div>
