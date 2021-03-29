@@ -591,7 +591,15 @@ int main()
 <p><strong><em>访问顶端元素的时候要注意是否为空，不然会产生段错误</em></strong></p>
 <p><strong><em>栈满的时候要考虑上溢的情况，栈空的时候要考虑下溢的情况</em></strong></p>
 <p><strong><em>在栈空的情况下，不能做退栈运算，否则产生下溢。</em></strong></p>
-<h4 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h4><h4 id="映射（map）"><a href="#映射（map）" class="headerlink" title="映射（map）"></a>映射（map）</h4><h4 id="二进制有序集合（bitset"><a href="#二进制有序集合（bitset" class="headerlink" title="二进制有序集合（bitset)"></a>二进制有序集合（bitset)</h4><h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><p>▸ max(val1, val2)：返回更⼤的数<br>▸ min(val1, val2)：返回更⼩的数<br>▸ swap(type, type)：交换两者的值，可以是两个值也可以是两个STL的容器</p>
+<h4 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h4><p>常用操作：<br>1.元素插入：insert()<br>2.中序遍历：类似vector遍历（用迭代器）<br>3.反向遍历：利用反向迭代器reverse_iterator。<br>    例：</p>
+<p>1 set<int> s;<br>2 ……<br>3 set<int>::reverse_iterator rit;<br>4 for(rit=s.rbegin();rit!=s.rend();rit++)</int></int></p>
+<p>4.元素删除：与插入一样，可以高效的删除，并自动调整使红黑树平衡。</p>
+<p>1 set<int> s;<br>2 s.erase(2);        //删除键值为2的元素<br>3 s.clear();</int></p>
+<p>5.元素检索：find()，若找到，返回该键值迭代器的位置，否则，返回最后一个元素后面一个位置。</p>
+<p>1 set<int> s;<br>2 set<int>::iterator it;<br>3 it = s.find(5);    //查找键值为5的元素<br>4 if (it != s.end())    //找到<br>5 cout &lt;&lt; *it &lt;&lt; endl;<br>6 else            //未找到<br>7 cout &lt;&lt; “未找到”;<br>————————————————<br>版权声明：本文为CSDN博主「big ding」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41932243/article/details/88045349">https://blog.csdn.net/qq_41932243/article/details/88045349</a></int></int></p>
+<h4 id="映射（map）"><a href="#映射（map）" class="headerlink" title="映射（map）"></a>映射（map）</h4><h4 id="二进制有序集合（bitset"><a href="#二进制有序集合（bitset" class="headerlink" title="二进制有序集合（bitset)"></a>二进制有序集合（bitset)</h4><p>==补充：位运算==</p>
+<p><img src="/.com//image-20210329082544079.png" alt="image-20210329082544079"></p>
+<h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><p>▸ max(val1, val2)：返回更⼤的数<br>▸ min(val1, val2)：返回更⼩的数<br>▸ swap(type, type)：交换两者的值，可以是两个值也可以是两个STL的容器</p>
 <p><strong>排序函数</strong></p>
 <p>sort(first, last, compare)<br>▸ first：排序起始位置（指针或 iterator）<br>▸ last：排序终⽌位置（指针或 iterator），即最后一个元素的后一个位置<br>▸ compare：⽐较⽅式，可以省略，省略时默认按升序排序，如果排序的元素没有定义比较运算（如结构体），必须有compare<br>▸ sort 排序的范围是 [first, last)，时间为 O(nlogn)     <strong><em>底层是快排</em></strong></p>
 <p><em>例子</em></p>
@@ -608,6 +616,23 @@ int main()
     sort(arr,arr+5,[](int a,int b)&#123;return a&gt;b;&#125;);
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​    <strong>reserve反转函数</strong></p>
+<p>与sort一样，位于<code>#include &lt;algorithm&gt;</code></p>
+<blockquote>
+<p> reverse函数用于反转在[first,last)范围内的顺序（包括first指向的元素，不包括last指向的元素），reverse函数没有返回值</p>
+</blockquote>
+<p><strong>使用方法</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;交换vector容器中元素顺序
+vector&lt;int&gt; v &#x3D; &#123;5,4,3,2,1&#125;;
+reverse(v.begin(),v.end());&#x2F;&#x2F;v的值为1,2,3,4,5
+&#x2F;&#x2F;交换string字符串中元素的顺序
+string str&#x3D;&quot;www.mathor.top&quot;;
+reverse(str.begin(),str.end());&#x2F;&#x2F;str结果为pot.rohtam.wwww
+&#x2F;&#x2F;交换字符数组char[]中元素的顺序
+char a[101] &#x3D; “hello world”;
+reverse(a,a+strlen(a));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <p>**去重函数（unique） **</p>
 <p>unique(first, last)：<br>▸ [first, last)范围内的值必须是一开始就提前排好序的<br>▸ 移除 [first, last) 内连续重复项<br>▸ 去重之后的返回最后一个元素的下一个地址（迭代器）</p>
 <p><em>例子</em></p>
@@ -647,6 +672,46 @@ int main()
     while (next_permutation(a, a + 3));
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="补充"><a href="#补充" class="headerlink" title="==补充=="></a>==补充==</h4><p>运算符重载：</p>
+<p>sort的运算符重载</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct A&#123;
+    string name;
+    int a;
+&#125;arr[1000];
+
+bool cmp(A a,A b)&#123;
+    return a.name&lt;b.name;&#x2F;&#x2F;默认是升序排列
+&#125;
+
+sort(arr,arr+m,cmp)&#x2F;&#x2F;m是元素个数
+    
+    
+ 
+    
+    
+    
+ 
+    struct Node&#123;
+  char c[1000];
+  int x,sum;
+&#125;p[110]; 
+bool cmp(Node a,Node b)
+&#123;
+  if(a.sum&#x3D;&#x3D;b.sum) return a.x&lt;b.x;
+    &#x2F;&#x2F;前两者相同，比较后两者
+  return a.sum&gt;b.sum;
+&#125;
+&gt;????&lt;?????
+    这是定义逻辑函数，还可以重载运算符进行比较<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/.com//image-20210323204112731-1616546687194.png" alt="image-20210323204112731"></p>
+<p>优先队列的运算符重载</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct Node&#123;
+    int x,y;
+&#125;;
+bool operator&lt;(Node a,Node b)&#123;
+    return a.x&lt;b.x;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>是否一样？？</p>
 
                 
             </div>
