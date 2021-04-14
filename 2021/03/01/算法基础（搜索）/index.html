@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Day2, 泡沫">
+    <meta name="keywords" content="算法基础(搜索), 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Day2 | 泡沫</title>
+    <title>算法基础(搜索) | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Day2</h1>
+                    <h1 class="description center-align post-title">算法基础(搜索)</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-01
                 </div>
                 
 
@@ -467,300 +471,516 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题-B-【队列】周末舞会"><a href="#问题-B-【队列】周末舞会" class="headerlink" title="问题 B: 【队列】周末舞会"></a>问题 B: 【队列】<a target="_blank" rel="noopener" href="http://acm.zzu.edu.cn/problem.php?cid=1045&pid=1">周末舞会</a></h3><p>队列的经典用法：出队再入队</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1996">类似的约瑟夫问题</a></p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210329185712.jpg" alt="1616484393433"></p>
-<p>==代码:==</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()&#123;
-    queue&lt;int&gt;a,b,c;
-    int n, m;
-    cin &gt;&gt; n &gt;&gt; m;
-    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)
-        a.push(i);
-    for (int i &#x3D; 1; i &lt;&#x3D; m;i++)
-        b.push(i);
-    int k;
-    cin &gt;&gt; k;
-    for (int i &#x3D; 1; i &lt;&#x3D; k;i++)&#123;
-        cout &lt;&lt; a.front() &lt;&lt; &quot; &quot; &lt;&lt; b.front() &lt;&lt; endl;
-        a.push(a.front()), b.push(b.front());
-        a.pop(),b.pop();
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="题-C-堆栈的使用"><a href="#题-C-堆栈的使用" class="headerlink" title="题 C: 堆栈的使用"></a>题 C: 堆栈的使用</h3><p>模板题，STL库中栈的简单操作</p>
-<p>==代码：==</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()&#123;
-    int n;
-    while(1)&#123;
-    cin&gt;&gt;n;
-    if(n&#x3D;&#x3D;0)break;
-    stack&lt;int&gt; st;
-    for (int i &#x3D; 0; i &lt; n;i++)&#123;
-        char ch;
-        cin &gt;&gt; ch;
-        if(ch&#x3D;&#x3D;&#39;P&#39;)&#123;
-            int k;
-            cin &gt;&gt; k;
-            st.push(k);
-        &#125;
-        if(ch&#x3D;&#x3D;&#39;O&#39;&amp;&amp;!st.empty())st.pop();
-        if(ch&#x3D;&#x3D;&#39;A&#39;)&#123;
-            if(!st.empty())cout&lt;&lt;st.top()&lt;&lt;endl;
-            else cout&lt;&lt;&#39;E&#39;&lt;&lt;endl;
-        &#125;
-
-    &#125;
-    cout&lt;&lt;endl;
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题-D-【排序】日期比较"><a href="#问题-D-【排序】日期比较" class="headerlink" title="问题 D: 【排序】日期比较"></a>问题 D: 【排序】日期比较</h3><p>sort函数与运算符重载<u><em>(准确来说，是定义逻辑函数)</em></u></p>
-<p>==说明:==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210329185713.png" alt="image-20210323204112731-1616546687194"></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct st
+                <blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270261438">https://zhuanlan.zhihu.com/p/270261438</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1j7411n7cq">https://www.bilibili.com/video/BV1j7411n7cq</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nK4y1L7L6">https://www.bilibili.com/video/BV1nK4y1L7L6</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TA411x7H8">https://www.bilibili.com/video/BV1TA411x7H8</a></p>
+<p>（带着做一些题目）</p>
+</blockquote>
+<p><strong>放在前面</strong>：DFS,BFS既是遍历图的方式，也是一种搜索思想</p>
+<h3 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a><strong>深度优先遍历</strong>（DFS）</h3><p><strong><em>实现路径</em></strong></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs%20tu.gif" alt="dfs tu"></p>
+<p><strong><em>代码思路</em></strong></p>
+<pre class="line-numbers language-none"><code class="language-none">DFS（顶点v）
 &#123;
-    int yr, mo, dy;
-&#125;;
-bool cmp(st a,st b)&#123;
-    if(a.yr!&#x3D;b.yr)
-        return a.yr &lt; b.yr;
-    else if(a.mo!&#x3D;b.mo)
-         return a.mo &lt; b.mo;
-    else if(a.dy!&#x3D;b.dy)
-        return a.dy &lt; b.dy;
-    return 1;&#x2F;&#x2F;三者都相等，不交换
+  标记v为已遍历；
+  for（对于每一个邻接v且未标记遍历的点u）
+      DFS（u）;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;详细
+void dfs(now)&#123;&#x2F;&#x2F;递归参数（每一个点）    &#x2F;&#x2F;层数
+    
+    
+	if(now&#x3D;&#x3D;n)&#123;&#x2F;&#x2F;到达终点             &#x2F;&#x2F;到达最底层
+       	终点处操作（记录答案&#x2F;输出答案...）
+        return;
+    &#125;
+    
+    
+    &#x2F;&#x2F;if(剪枝条件)return;
+    
+    
+    for(枚举状态)&#123;       &#x2F;&#x2F;每层有多少情况
+        &#x2F;&#x2F;操作sum+&#x3D;
+        vis[]
+        dfs(now+1);
+        &#x2F;&#x2F;撤回操作
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong><em>树的表示</em></strong></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
+<p><em>如果把多种情况写成一个树的方式</em></p>
+<p><em>那么DFS的实质就是遍历所有分枝来寻找最优解</em></p>
+<p><em>而DFS中遍历所有解的方式采用了我们称之为回溯法的东西</em></p>
+<p><strong><em>几个经典代码</em></strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递归求全排列
+int a[3];
+int vis[3];
+void dfs(int now)&#123;
+	if(now&#x3D;&#x3D;4)&#123;
+		for (int i &#x3D; 0; i &lt; 3;i++)
+			cout &lt;&lt; a[i];
+		return;
+	&#125;
+	for (int i &#x3D; 1; i &lt;&#x3D; 3;i++)&#123;
+		if(vis[i])
+			continue;
+		a[now] &#x3D; i;
+		vis[i] &#x3D; 1;
+		dfs(now + 1);
+		vis[i] &#x3D; 0;
+	&#125;
+	return;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;八皇后
+int ans[10], vis[3][20];
+void dfs(int now) &#123;
+	if(now &#x3D;&#x3D; 9) &#123;
+		for(int i &#x3D; 1; i &lt;&#x3D; 8; i++)	cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
+		cout &lt;&lt; &quot;\n&quot;;
+		return;
+	&#125;
+	for(int i &#x3D; 1; i &lt;&#x3D; 8; i++) &#123;
+		if(vis[0][i] || vis[1][now + i] || vis[2][now - i + 8])	continue;
+		ans[now] &#x3D; i;
+		vis[0][i] &#x3D; 1; vis[1][now + i] &#x3D; 1; vis[2][now - i + 8] &#x3D; 1;
+		dfs(now + 1);
+		vis[0][i] &#x3D; 0; vis[1][now + i] &#x3D; 0; vis[2][now - i + 8] &#x3D; 0;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;迷宫问题
+#include&lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+
+const int dx[4] &#x3D; &#123;0, 0, 1, -1&#125;, dy[4] &#x3D; &#123;1, -1, 0, 0&#125;;
+int n, m, t, sx, sy, fx, fy, ans &#x3D; 0;
+int mp[10][10] &#x3D; &#123;0&#125;, vis[10][10] &#x3D; &#123;0&#125;;
+
+void dfs(int nowx, int nowy) &#123;
+	if(nowx &#x3D;&#x3D; fx &amp;&amp; nowy &#x3D;&#x3D; fy) &#123;
+		ans++;
+		return;
+	&#125;
+	for(int i&#x3D;0;i&lt;4;i++) &#123;
+		int nx &#x3D; nowx + dx[i], ny &#x3D; nowy + dy[i];
+		if(nx &lt; 1 || nx &gt; n || ny &lt; 1 || ny &gt; m)	continue;
+		if(mp[nx][ny] || vis[nx][ny])	continue;
+		vis[nx][ny] &#x3D; 1;
+		dfs(nx, ny);
+		vis[nx][ny] &#x3D; 0;
+	&#125;
+&#125; 
+
+int main() &#123;
+	cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
+	cin &gt;&gt; sx &gt;&gt; sy &gt;&gt; fx &gt;&gt; fy;
+	while(t--) &#123;
+		int x, y; cin &gt;&gt; x &gt;&gt; y;
+		mp[x][y] &#x3D; 1;
+	&#125;
+	vis[sx][sy] &#x3D; 1; 
+	dfs(sx, sy);
+	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;; 
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>==关于回溯解释==</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/%E5%85%B3%E4%BA%8E%E5%9B%9E%E6%BA%AF.png" alt="关于回溯"></p>
+<p>在此图中，若每次标记完后，结束该路径不回溯，那么下次通过其他路径时，不会访问（如联通块染色问题，染过之后，不用重复染色），但是要想从不同的路径还能去访问此点，则需要回溯（如迷宫路线问题，全排列问题，八皇后问题）</p>
+<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs%20tu.gif" alt="bfs tu"></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;伪代码
+int n&#x3D;10,m&#x3D;10;
+void bfs()&#123;
+    queue que;
+    int graph[m][n];
+    int px[]&#x3D;&#123;1,-1,0,0&#125;;
+    int py[]&#x3D;&#123;0,0,1,-1&#125;;    
+    que.push(起点);
+    vis(起点)&#x3D;1;
+    while(!que.empty())&#123;
+        
+        auto temp&#x3D;que.front();&#x2F;&#x2F;得到队列中的元素
+        que.pop();
+        &#x2F;&#x2F;if(结束条件)
+        for(int i&#x3D;0;i!&#x3D;4;++i)&#123;
+            定义移动后的格子
+            if(&#x2F;&#x2F;可以走)     
+    &#x2F;&#x2F;没背标记过&amp;&amp;没有遇到障碍物（地图中标为1，因为从g[1][1]读，不用担心越界，默认标记为0）
+                
+               
+                &#x2F;&#x2F;标记当前格子
+                
+                
+                &#x2F;&#x2F;将当前状态入列，等待下次提取
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p>==DFS==</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs.gif" alt="dfs"></p>
+<p>==BFS==</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs.gif" alt="bfs"></p>
+<hr>
+<h3 id="深入：回溯法（DFS）"><a href="#深入：回溯法（DFS）" class="headerlink" title="深入：回溯法（DFS）"></a>深入：回溯法（DFS）</h3><p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172046.png" alt="image-20210409172046086"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172112.png" alt="image-20210409172112177"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172333.png" alt="image-20210409172333768"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172408.png" alt="image-20210409172408663"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172444.png" alt="image-20210409172444466"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172454.png" alt="image-20210409172454868"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172502.png" alt="image-20210409172502422"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172520.png" alt="image-20210409172520764"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210409172531.png" alt="image-20210409172531266"></p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>DFS类枚举</p>
+<blockquote>
+<ol>
+<li>全排列的枚举：<br> 输入n，按字典序输出所有1~n的全排列，n不超过10；(洛谷P1706)<br> 输入3，输出{1,2,3}{1,3,2},{2,1,3},{2,3,1},{3,1,2},{3,2,1};</li>
+</ol>
+<p>时间复杂度O(n!)<br>next_permutation很强大！可以生成下一个全排列并判断是否生成了所有n!个全排列，但需要定义小于号</p>
+<hr>
+<ol start="2">
+<li>集合的枚举：<br> 给一个n个元素的集合，输出他的所有子集，n不超过10；<br> 例如，{1,2,3}需要输出{},{1},{2},{3},{1,2},{1,3},{2,3},{1,2,3}</li>
+</ol>
+<p>时间复杂度O(2^n)；<br>可以用位运算来非递归的枚举，不过多深入</p>
+<hr>
+<ol start="3">
+<li>组合的枚举：<br> 给一个n个元素的集合，输出从他之中选出k个元素的所有方案；<br> 例如，{1,2,3}中选两个需要输出{1,2},{1,3},{2,3}</li>
+</ol>
+<p>时间复杂度O(n^k)；<br>类似全排列，在DFS函数的判断终止条件处改一下即可</p>
+</blockquote>
+<hr>
+<p>二维平面问题:</p>
+<p>利用dx[],dy[]这种数组来高效的写4方向、6方向、8方向的移动；<br>DFS或BFS可以解决一些判断联通、可达的问题；各自有各自的用处</p>
+<p>迷宫问题:</p>
+<blockquote>
+<p>给你个只含有障碍和平地的二维迷宫，问你两个点是否互相可达？<br>问两个点之间最短距离是多少？<br>问题一，只要从一个点开始BFS看能不能到另外一个就可了；<br>问题二，使用dis[ N ] [ N ]数组（初始化为<del>负</del>无穷）记录所有点到起点之间的最短距离；<br>每次从队列取出一点时，试着更新周围各点距离<br>当前点：px,py；周围一点：xx,yy；则通过这个更新：<br>dis[ xx ] [ yy ]=min(dis[xx] [yy],dis[px] [py]+1)     <em>迷宫初始化为INF（无穷大）</em></p>
+<p>为什么BFS这样可以找到最短路？距离关于入列顺序单调不减！</p>
+</blockquote>
+<h3 id="题目、剪枝初探："><a href="#题目、剪枝初探：" class="headerlink" title="题目、剪枝初探："></a>题目、剪枝初探：</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/112#problems">洛谷题单【算法1-7】搜索：</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1784">P1784 数独</a></p>
+<p>由此题去初探剪枝</p>
+<blockquote>
+<p><strong>V1.0：“这不和枚举全排列差不多吗”</strong><br>搜索对象：所有的空位置上试着填1~9所有的数字；<br>终止条件：无空位置（填满了），判断是否合法；</p>
+<p><strong>V2.0：可行性剪枝</strong><br>在V1.0的基础上，每填一个数字，check一次；（另一种等效的说法是，不再填1~9所有的数字，而填当前能合法的数字）<br>俗话说的好(?)，幂小于指数，早剪早享受；</p>
+<p>V2.0：<br>搜索对象：所有的空位置上试着填<strong>合法</strong>的所有的数字；<br>终止条件：无空位置（填满了），那就是答案了；</p>
+<p><strong>V3.0：排除等效冗余</strong><br>来个高中数学题：5个人选2个人去开会，有几种方案？当然是10啦~<br>注意奥，是5<em>4/2不是5</em>4；所以你发现了什么没<br>所以……其实我们不用搜所有的空位置，选一个搜就可以了</p>
+<p>V3.0：<br>搜索对象：在<strong>某一个空位置</strong>上试着填<strong>合法的</strong>所有的数字；<br>终止条件：无空位置（填满了），那就是答案了；</p>
+<p><strong>V4.0：搜索顺序剪枝</strong><br>在所有位置中，总是选择<strong>合法数字最少</strong>的位置来填；<br>一些搜索问题，只要求我们找到一组可行解（或可行解唯一，抑或判断是否可行），所以我们争取做到不用搜完所有情况就可以出答案；</p>
+<p><strong>V4.0：最终版本</strong><br>搜索对象：在<strong>合法数字最少</strong>的<strong>一个空位置</strong>上试着填<strong>合法的</strong>所有的数字；<br>终止条件：无空位置（填满了），那就是答案了；</p>
+<p>上面的过程就是剪枝，如果你之后有空的话，可以多写几个程序，试试剪枝与不剪枝在时间复杂度上的差别<br>时间复杂度O(神必)</p>
+</blockquote>
+<hr>
+<h4 id="最短路径，图-BFS："><a href="#最短路径，图-BFS：" class="headerlink" title="最短路径，图,BFS："></a>最短路径，图,BFS：</h4><p><a target="_blank" rel="noopener" href="https://www.dotcpp.com/oj/problem1825.html"><strong>穿越雷区</strong></a></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1141">P1141 01迷宫</a></p>
+<p>bfs+联通块（时间优化）//多次询问</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;不优化，直接用ans存储答案
+typedef pair&lt;int, int&gt; pii;
+const int INF &#x3D; 0x3f3f3f3f;
+int n,m;
+int v[1100][1100];
+int g[1100][1100];
+int sx, sy;
+int dx[]&#123;0, 0, 1, -1&#125;;
+int dy[]&#123;1, -1, 0, 0&#125;;
+int xx, yy;
+
+int ans;
+
+void bfs()&#123;
+    queue&lt;pii&gt; q;
+    q.push(&#123;sx, sy&#125;);
+    v[sx][sy] &#x3D; 1;
+    while(!q.empty())&#123;
+        pii t &#x3D; q.front();
+        q.pop();
+        
+        for (int i &#x3D; 0; i &lt; 4;i++)&#123;
+            xx &#x3D; t.first + dx[i], yy &#x3D; t.second + dy[i];
+            if(g[xx][yy]!&#x3D;INF&amp;&amp;!v[xx][yy])&#123;
+                if(g[t.first][t.second]!&#x3D;g[xx][yy])&#123;
+                v[xx][yy] &#x3D; 1;
+                q.push(&#123;xx, yy&#125;);
+                ans++;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
 &#125;
 
 int main()&#123;
-    st date[1100];
-    int n;
+    memset(g, 0x3f, sizeof(g));
+    cin &gt;&gt; n&gt;&gt;m;
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)
+            scanf(&quot;%1d&quot;, &amp;g[i][j]);
+    &#125;
+    
+    while(m--)&#123;
+        memset(v, 0, sizeof(v));
+        cin &gt;&gt; sx &gt;&gt; sy;
+        ans &#x3D; 0;
+        bfs();
+        cout &lt;&lt; ans+1&lt;&lt;endl;
+    &#125;
+&#125;
+
+&#x2F;&#x2F;优化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<hr>
+<h4 id="DFS杂题："><a href="#DFS杂题：" class="headerlink" title="DFS杂题："></a>DFS杂题：</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1219">P1219 [USACO1.5]八皇后 Checker Challenge</a></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int n;
+int v1[15], v2[15], v3[50], v4[50];
+
+int ans[15], re_num;
+void show()&#123;
+    for (int i &#x3D; 1; i &lt;&#x3D;n;i++)
+        cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+&#125;
+
+void dfs(int now)&#123;
+    if(now&#x3D;&#x3D;n+1)&#123;
+        if(re_num&lt;3)
+        show();
+        re_num++;
+        return;
+    &#125;
+    
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        if(!(v1[now]||v2[i]||v3[now-i+n]||v4[i+now]))&#123;
+            v1[now] &#x3D; 1, v2[i] &#x3D; 1, v3[now - i + n] &#x3D; 1, v4[i + now] &#x3D; 1;
+            ans[now] &#x3D; i;
+            dfs(now + 1);
+            ans[now] &#x3D; 0;
+            v1[now] &#x3D; 0, v2[i] &#x3D; 0, v3[now - i + n] &#x3D; 0, v4[i + now] &#x3D; 0;
+        &#125;
+    &#125;
+&#125;
+
+int main()&#123;
     cin &gt;&gt; n;
-    for (int i &#x3D; 0; i &lt; n;i++)&#123;
-        int yr, mo, dy;
-        cin &gt;&gt; yr &gt;&gt; mo &gt;&gt; dy;
-        date[i].yr &#x3D; yr;
-        date[i].mo &#x3D; mo;
-        date[i].dy &#x3D; dy;
+    dfs(1);
+    cout &lt;&lt; re_num;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.dotcpp.com/oj/problem2087.html"><strong>[蓝桥杯][算法提高VIP]8皇后·改</strong></a></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int n&#x3D;8;
+int v1[15], v2[15], v3[50], v4[50];
+
+int g[15][15];
+int re;
+int sum;
+
+void dfs(int now)&#123;
+    if(now&#x3D;&#x3D;n+1)&#123;
+        re &#x3D; max(re, sum);
+        return;
     &#125;
-    sort(date, date + n, cmp);
-    for (int i &#x3D; 0; i &lt; n;i++)&#123;
-        cout &lt;&lt; date[i].yr &lt;&lt; &quot; &quot; &lt;&lt; date[i].mo &lt;&lt; &quot; &quot; &lt;&lt; date[i].dy &lt;&lt; endl;
+    
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        if(!(v1[now]||v2[i]||v3[now-i+n]||v4[i+now]))&#123;
+            v1[now] &#x3D; 1, v2[i] &#x3D; 1, v3[now - i + n] &#x3D; 1, v4[i + now] &#x3D; 1;
+            sum +&#x3D; g[now][i];
+            dfs(now + 1);
+            sum -&#x3D; g[now][i];
+            v1[now] &#x3D; 0, v2[i] &#x3D; 0, v3[now - i + n] &#x3D; 0, v4[i + now] &#x3D; 0;
+        &#125;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题-E-姓名排序"><a href="#问题-E-姓名排序" class="headerlink" title="问题 E: 姓名排序"></a>问题 E: 姓名排序</h3><p>利用sort或者是set进行排序</p>
-<p><strong><em>利用set:</em></strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()&#123;
-	int m,n;
-	cin &gt;&gt; m;
-	while(m--)&#123;
-		cin &gt;&gt; n;
-		set&lt;string&gt; s;&#x2F;&#x2F;此题是姓名没有重复的，若是有用multiset(可以储存相同的元素)
-		for (int i &#x3D; 0; i &lt; n;i++)&#123;
-		string st;
-		cin &gt;&gt; st;
-		s.insert(st);
-		&#125;
-		for(auto i:s)
-			cout &lt;&lt; i &lt;&lt; endl;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong><em>利用sort</em></strong>:</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str[20];
-int main()&#123;
-	int m,n;
-	cin &gt;&gt; m;
-	while(m--)&#123;
-		cin &gt;&gt; n;
-		for (int i &#x3D; 0; i &lt; n;i++)&#123;
-			cin &gt;&gt; str[i];
-		&#125;
-		sort(str, str + n);
-		for (int i &#x3D; 0; i &lt; n;i++)&#123;
-			cout &lt;&lt; str[i] &lt;&lt; endl;
-		&#125;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题-F-vector-使用练习题"><a href="#问题-F-vector-使用练习题" class="headerlink" title="问题 F: vector 使用练习题"></a>问题 F: vector 使用练习题</h3><p>涉及到二维vector的使用</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html"><em>参考链接</em></a></p>
-<ul>
-<li>二维vector定义方法：</li>
-</ul>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt; vector&lt;int&gt; &gt;v; 二维向量&#x2F;&#x2F;这里最外的&lt;&gt;要有空格。否则在比较旧的编译器下无法通过
-&#x2F;&#x2F;行和 列都可变
- &#x2F;&#x2F;也可以在定义的时候进行初始化
- vector&lt; vector&lt;int&gt; &gt;v5&#123;&#123;1,2&#125;,&#123;1&#125;,&#123;1,2,3&#125;&#125;;
-通过&#123;&#125;直接进行初始化属于C++11的特性，！！！蓝桥杯不支持C++11<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><strong><em>以下是在定义的时候给定动态数组大小的方法：</em></strong></li>
-</ul>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210329185714.png" alt="image-20210326083740378"></p>
-<ul>
-<li><p>注意二维数组的插入方式</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;vector&lt;int&gt; &gt; A;
-&#x2F;&#x2F;A.push_back里必须是vector!!!(实际上相当于定义了一个vecctor类型的动态数组)
-正确的插入方式:
-vector&lt;int&gt; B;
-B.push_back(0);
-B.push_back(1);
-B.push_back(2);
-A.push_back(B);
-B.clear();	&#x2F;&#x2F;清空B
-.....循环....
-错误的插入方式:
-vector&lt;vector&lt;int&gt; &gt; A;
-A[0].push_back(0);
-A[0].push_back(1);
-A[0].push_back(2);
-A[1].push_back(3);
-
-简化
-	for (int i &#x3D; 0; i &lt; n;i++)&#123;
-		vector&lt;int&gt; temp;&#x2F;&#x2F;每行开始时，新定义一个vector
-		for (int j &#x3D; 0; j &lt; m;j++)
-			temp.push_back(j);
-		v.push_back(temp);
-	&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-</li>
-<li><p>排序vector</p>
-</li>
-</ul>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210329185715.png" alt="image-20210326083329138"></p>
-<p>==代码：==</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main()&#123;
-	int n,m;
-	cin &gt;&gt; n &gt;&gt; m;
-	vector&lt;vector&lt;int&gt;&gt; v;
-	for (int i &#x3D; 0; i &lt; n;i++)&#123;
-		vector&lt;int&gt; temp;
-		for (int j &#x3D; 0; j &lt; m;j++)
-			temp.push_back(j);
-		v.push_back(temp);
-	&#125;
-	int q;
-	cin &gt;&gt; q;
-	while(q--)&#123;
-		int i, j;
-		cin &gt;&gt; i &gt;&gt; j;
-		cout &lt;&lt; v[i][j] &lt;&lt; endl;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h3 id="补充题"><a href="#补充题" class="headerlink" title="==补充题=="></a>==补充题==</h3><p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805046380707840/problems/994805059731177472"><strong>PTA L2-019 悄悄关注</strong></a></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;algorithm&gt;
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include&lt;map&gt;
-#include &lt;set&gt;
-#include &lt;stack&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-using namespace std;
-
-int main()&#123;
-	int n;
-	set&lt;string&gt; s;
-	for (int i &#x3D; 0; i &lt; n;i++)&#123;
-		string name;
-		cin &gt;&gt; name;
-		s.insert(name);
-	&#125;
-
-	int m;
-	cin &gt;&gt; m;
-	map&lt;string, int&gt; mp;
-	int ave&#x3D;0;
-	for (int i &#x3D; 0; i &lt; m;i++)&#123;
-		string name;
-		int score;
-		cin &gt;&gt; name &gt;&gt; score;
-		ave +&#x3D; score;
-		mp[name] &#x3D; score;
-	&#125;
-	ave &#x2F;&#x3D; m;
-	&#x2F;&#x2F;在不支持C++11的情况下，通过迭代器去遍历
-	&#x2F;&#x2F; map&lt;string, int&gt;::iterator it;
-	&#x2F;&#x2F; for (it &#x3D; mp.begin(); it !&#x3D; mp.end();it++)&#123;
-	&#x2F;&#x2F; 	if((*it).second&gt; ave &amp;&amp; !s.count((*it).first))&#x2F;&#x2F; 或者是 s.find((*it).first)&#x3D;&#x3D;s.end()
-	&#x2F;&#x2F; 		cout &lt;&lt; (*it).first &lt;&lt; endl;
-	&#x2F;&#x2F; &#125;
-	int f &#x3D; 1;
-	for (auto i : mp)&#123;
-		if(i.second&gt;ave&amp;&amp;!s.count(i.first))&#123;
-			if(f)
-				cout &lt;&lt; i.first;
-			else
-				cout &lt;&lt; endl
-					 &lt;&lt; i.first;
-			f &#x3D; 0;
-		&#125;	
-	&#125;
-	if(f)cout&lt;&lt;&quot;Bing Mei You&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805046380707840/problems/994805058485469184">PTA <strong>L2-021 点赞狂魔</strong></a></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;algorithm&gt;
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include&lt;map&gt;
-#include &lt;set&gt;
-#include &lt;stack&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-using namespace std;
-struct user
-&#123;
-	string name;
-	int tips;
-	int clicks;
-&#125;a[105];
-
-bool cmp(user a,user b)&#123;
-	if(a.tips!&#x3D;b.tips)
-	return a.tips &gt; b.tips;
-	else
-		return a.clicks &lt; b.clicks;
 &#125;
 
 int main()&#123;
-	int n;
-	cin &gt;&gt; n;
-	for (int i &#x3D; 0; i &lt; n;i++)&#123;
-		cin&gt;&gt;a[i].name;
-		int k;
-		cin &gt;&gt; k;
-		set&lt;int&gt; s;
-	for(int j&#x3D;0;j&lt;k;j++)&#123;
-			int t;
-			cin &gt;&gt; t;
-			s.insert(t);
-		&#125;
-		a[i].tips &#x3D; s.size();
-		a[i].clicks &#x3D; k;
-		&#125;
+    for (int i &#x3D; 1; i &lt;&#x3D; 8;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; 8;j++)
+            cin &gt;&gt; g[i][j];
+    &#125;
+    dfs(1);
+    cout &lt;&lt; re;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h4 id="BFS杂题："><a href="#BFS杂题：" class="headerlink" title="BFS杂题："></a>BFS杂题：</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1162">P1162 填涂颜色</a></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;非正确写法：非BFS写法，即竖直或者是水平遍历，有一个点不过（被挡住的）
+typedef pair&lt;int, int&gt; pii;
+const int INF &#x3D; 0x3f3f3f3f;
+int n;
+int g[40][40];
+int v[40][40];
+int main()
+&#123;
+    cin &gt;&gt; n;
+    
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            cin &gt;&gt; g[i][j];
+            v[i][j] &#x3D; g[i][j];
+            &#125;
+    &#125;
+    &#x2F;&#x2F;从左向右
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            if(v[i][j])
+                break;
+            v[i][j] &#x3D; 1;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;从右项左
+    for (int i &#x3D; n; i &gt;0;i--)&#123;
+        for (int j &#x3D; n; j &gt;0;j--)&#123;
+            if(v[i][j])
+                break;
+            v[i][j] &#x3D; 1;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;从上往下
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            if(v[j][i])
+                break;
+            v[j][i] &#x3D; 1;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;从下往上
+    for (int i &#x3D; n; i &gt;0;i--)&#123;
+        for (int j &#x3D; n; j &gt;0;j--)&#123;
+            if(v[j][i])
+                break;
+            v[j][i] &#x3D; 1;
+        &#125;
+    &#125;
 
-	sort(a, a + n, cmp);
-	if(n&gt;&#x3D;3)&#123;
-		cout &lt;&lt; a[0].name;
-		for (int i &#x3D; 1; i &lt; 3;i++)
-			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i].name;
-	&#125;
-	else if(n&gt;0)&#123;
-		cout &lt;&lt; a[0].name;
-		for (int i &#x3D; 1; i &lt; n;i++)
-		cout &lt;&lt; &quot; &quot; &lt;&lt; a[i].name;
-		for (int i &#x3D; n; i &lt; 3;i++)
-			cout &lt;&lt; &quot; -&quot;;
-	&#125;
-	else
-		cout &lt;&lt; &quot;- - -&quot;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            if(v[i][j]&#x3D;&#x3D;0)
+                g[i][j] &#x3D; 2;
+        &#125;
+    &#125;
+
+     for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            cout &lt;&lt; g[i][j]&lt;&lt;&quot; &quot;;        &#125;
+        cout &lt;&lt; endl;
+    &#125;
+&#125;
+-----------------------------
+ 正经的BFS写法：&#x2F;&#x2F;里面闭合的0不好扫，那就扫外面的，先把外面的标记了，再去搜索没被标记的，把未标记的变为2即可
+typedef pair&lt;int, int&gt; pii;
+const int INF &#x3D; 0x3f3f3f3f;
+int n;
+int g[40][40];
+int v[40][40];
+int dx[]&#123;0, 0, 1, -1&#125;;
+int dy[]&#123;1, -1, 0, 0&#125;;
+int xx, yy;
+
+&#x2F;&#x2F;关于这里，其实不是在图的内部，而是比图要大一圈，因为判断的方式，是走0，遇到1隔断，如果一个圈的0被1隔断了。就遍历不到了，所以在最外圈多增加一条路
+bool inner(int x,int y)&#123;
+    if (x &gt;&#x3D; 0 &amp;&amp; y &gt;&#x3D; 0 &amp;&amp; x &lt;&#x3D; n+1&amp;&amp;y&lt;&#x3D;n+1)  
+        return 1;
+    else
+        return 0;
+&#125;
+
+void bfs()&#123;
+    queue&lt;pii&gt; q;
+    q.push(&#123;0, 0&#125;);
+    while(!q.empty())&#123;
+        pii t &#x3D; q.front();
+        q.pop();
+        for (int i &#x3D; 0; i &lt; 4;i++)&#123;
+            xx &#x3D; t.first + dx[i], yy &#x3D; t.second + dy[i];
+            if(inner(xx,yy)&amp;&amp;v[xx][yy]&#x3D;&#x3D;0)&#123;
+                v[xx][yy] &#x3D; 1;
+                q.push(&#123;xx, yy&#125;);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            cin &gt;&gt; g[i][j];
+        v[i][j] &#x3D; g[i][j];
+    &#125;&#125;
+    bfs();
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+           if(v[i][j])
+               continue;
+           g[i][j] &#x3D; 2;
+    &#125;
+    &#125;
+    &#x2F;&#x2F;cout &lt;&lt; endl;
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n;j++)&#123;
+            cout &lt;&lt; g[i][j]&lt;&lt;&quot; &quot;;
+    &#125;
+    cout &lt;&lt; endl;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1443">P1443 马的遍历</a></p>
+<p>对坐标思考训练很好的一个题目，马的上下左右应该怎么走？坐标应该怎么变化？这些值得思考一下</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef pair&lt;int, int&gt; pii;
+int n, m, sx, sy;
+
+int v[500][500];
+int d[500][500];
+
+int dx[]&#123;-1,-1,1,1,2,2,-2,-2&#125;;
+int dy[]&#123;2,-2,2,-2,1,-1,1,-1&#125;;
+&#x2F;&#x2F;八种走法
+int xx, yy;
+
+bool inner(int x,int y)&#123;
+    if(x&gt;&#x3D;1&amp;&amp;y&gt;&#x3D;1&amp;&amp;x&lt;&#x3D;n&amp;&amp;y&lt;&#x3D;m)
+        return 1;
+        else
+            return 0;
+&#125;
+
+void bfs()&#123;
+    queue&lt;pii&gt; q;
+    q.push(&#123;sx, sy&#125;);
+    v[sx][sy] &#x3D; 1;
+    d[sx][sy] &#x3D; 0;
+    while(!q.empty())&#123;
+        pii t &#x3D; q.front();
+        q.pop();
+        for (int i &#x3D; 0; i &lt; 8;i++)&#123;
+            xx &#x3D; t.first + dx[i], yy &#x3D; t.second + dy[i];
+            if(inner(xx,yy)&amp;&amp;!v[xx][yy])&#123;
+                d[xx][yy] &#x3D; d[t.first][t.second] + 1;
+                v[xx][yy] &#x3D; 1;
+                q.push(&#123;xx, yy&#125;);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    memset(d, -1, sizeof(d));
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; sx &gt;&gt; sy;
+    bfs();
+    for (int i &#x3D; 1; i &lt;&#x3D; n;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; m;j++)
+            printf(&quot;%-5d&quot;, d[i][j]);
+        cout &lt;&lt; endl;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -787,7 +1007,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/03/28/Day2/">http://example.com/2021/03/28/Day2/</a>
+                    <a href="http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89/">http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -824,7 +1044,11 @@ int main()&#123;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -998,43 +1222,6 @@ int main()&#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/29/ZZUOJ/Day2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            GrittyB
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2021/03/19/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
                     <div class="card-image">
                         
@@ -1051,9 +1238,9 @@ int main()&#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1067,6 +1254,55 @@ int main()&#123;
                     
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                         <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="洛谷题单-字符串">
+                        
+                        <span class="card-title">洛谷题单-字符串</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            GrittyB
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B4%9B%E8%B0%B7/">
+                        <span class="chip bg-color">洛谷</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>

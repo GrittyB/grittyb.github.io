@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="洛谷题单-字符串, 泡沫">
+    <meta name="keywords" content="进制转换, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>洛谷题单-字符串 | 泡沫</title>
+    <title>进制转换 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">洛谷题单-字符串</h1>
+                    <h1 class="description center-align post-title">进制转换</h1>
                 </div>
             </div>
         </div>
@@ -429,17 +429,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                <span class="chip bg-color">洛谷</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -451,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-14
+                    2021-03-31
                 </div>
                 
 
@@ -475,15 +467,87 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5733">P5733【深基6.例1】自动修正</a></p>
-<blockquote>
-<p>描述：输入一个长度不超过 100 且不包括空格的字符串。要求将该字符串中的所有小写字母变成大写字母并输出。</p>
-</blockquote>
-<ul>
-<li><p>简单字符处理</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1914">P1914小书童——凯撒密码</a></p>
+                <p>详情请见：<a target="_blank" rel="noopener" href="https://blog.csdn.net/final__static/article/details/89405945?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-89405945.pc_search_result_before_js&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/final__static/article/details/89405945?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-89405945.pc_search_result_before_js&amp;spm=1018.2226.3001.4187</a></p>
+<p>低转高不难，即，按权展开，求和即可</p>
+<p>这里说一下不熟悉的高转低</p>
+<ol>
+<li>十进制转二进制<br>方法为：十进制数除2取余法，即十进制数除2，余数为权位上的数，得到的商值继续除，直到商为0为止。</li>
+</ol>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210331202518.png" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li>八进制转二进制<br>方法为：八进制数通过除2取余法，得到二进制数，对每个八进制为3个二进制，不足时在最左边补零。</li>
+</ol>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210331202535.png" alt="在这里插入图片描述"></p>
+<ol start="3">
+<li><p>十六进制转二进制</p>
+<p>方法为：十六进制数通过除2取余法，得到二进制数，对每个十六进制为4个二进制，不足时在最左边补零。<img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210331202725.png" alt="在这里插入图片描述"></p>
 </li>
-</ul>
+</ol>
+<p>不难发现，其实，就是对每一位</p>
+<p>除留余数，逆序输出余数即可。</p>
+<p>将10进制数转换为任意的n进制数，结果为string类(转换成二进制需要补零，10进制不需要)</p>
+<p>代码:</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string ItoA(int n,int base)&#123;
+    string ans;
+    while(n)&#123;
+        int t &#x3D; n % base;
+        if(t&gt;&#x3D;&#39;0&#39;&amp;&amp;t&lt;&#x3D;&#39;9&#39;)
+            ans +&#x3D; t + &#39;0&#39;;
+        else
+            ans +&#x3D; t - 10 + &#39;A&#39;;
+        n &#x2F;&#x3D;base;
+    &#125;
+    reverse(ans.begin(), ans.end());
+    return ans;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<p>个人习惯：</p>
+<p>二进制和十进制之间，用bitset</p>
+<p>其余，先手写一个Atoi函数（将任意进制转换为10进制）再用标准库函数<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strtol/6134558">strtol</a>函数，转化为其他进制</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int Atoi (string s,int base)&#123;
+    int ans&#x3D;0;
+    for (int i &#x3D; 0; i &lt; s.length();i++)&#123;
+        char t &#x3D; s[i];
+        ans &#x3D; ans * base + t;
+        if(t&gt;&#x3D;&#39;0&#39;&amp;&amp;t&lt;&#x3D;&#39;9&#39;)
+            ans -&#x3D; &#39;0&#39;;
+        else if (t &gt;&#x3D; &#39;A&#39; &amp;&amp; t &lt;&#x3D; &#39;Z&#39;)
+            ans &#x3D; ans-&#39;A&#39; + 10;
+        else if(t &gt;&#x3D; &#39;a&#39; &amp;&amp; t &lt;&#x3D; &#39;z&#39;)
+            ans &#x3D; ans-&#39;a&#39; + 10;
+    &#125;
+    return ans;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于ans=ans*radix+t-‘0’;解释（递推关系，用数列知识）：</p>
+<img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210401112135.png" alt="屏幕截图 2021-04-01 112004" style="zoom:33%;">
+
+<img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210401112109.png" alt="屏幕截图 2021-04-01 111941" style="zoom:33%;">
+
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strtol/6134558">strtol</a>函数：</p>
+<p>  函数原型：long int strtol(const char *nptr, char **endptr, int base)</p>
+<p>  base是要转化的数的进制，非法字符会赋值给endptr，nptr是要转化的字符</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;cstdlib&gt;
+int main()  
+&#123;  
+    char buffer[20]&#x3D;&quot;10549stend#12&quot;;  
+    char *stop;  
+    int ans&#x3D;strtol(buffer, &amp;stop, 8);   &#x2F;&#x2F;将八进制数1054转成十进制，后面均为非法字符
+    printf(&quot;%d\n&quot;,ans);  
+    printf(&quot;%s\n&quot;, stop);   
+    return 0;
+
+————————————————
+输出结果：
+556
+9stend#12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：</p>
+<p>​    ①如果base为0，且字符串不是以0x(或者0X)开头，则按十进制进行转化。</p>
+<p>   ②如果base为0或者16，并且字符串以0x（或者0X）开头，那么，x（或者X）被忽略，字符串按16进制转化。</p>
+<p>    ③如果base不等于0和16，并且字符串以0x(或者0X)开头，那么x被视为非法字符。</p>
+<p>     ④对于nptr指向的字符串，其开头和结尾处的空格被忽视，字符串中间的空格被视为非法字符。</p>
 
                 
             </div>
@@ -510,7 +574,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/</a>
+                    <a href="http://example.com/2021/03/31/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/">http://example.com/2021/03/31/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,15 +611,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                    <span class="chip bg-color">洛谷</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -729,13 +785,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89/">
+                <a href="/2021/04/05/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="算法基础(搜索)">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数学基础">
                         
-                        <span class="card-title">算法基础(搜索)</span>
+                        <span class="card-title">数学基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -746,7 +802,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                         </span>
                         <span class="publish-author">
                             
@@ -755,14 +811,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -774,13 +822,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/13/C++%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/03/30/%E7%BB%86%E8%8A%82%E5%8C%96%E7%9A%84%E8%AF%BB%E5%85%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="C++基础">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="细节化的读入">
                         
-                        <span class="card-title">C++基础</span>
+                        <span class="card-title">细节化的读入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,7 +839,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
                             </span>
                         <span class="publish-author">
                             
@@ -800,14 +848,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
                 </div>
                 
             </div>

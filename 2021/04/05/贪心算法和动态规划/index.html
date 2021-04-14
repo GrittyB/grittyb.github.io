@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法基础, 泡沫">
+    <meta name="keywords" content="贪心算法和动态规划, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法基础 | 泡沫</title>
+    <title>贪心算法和动态规划 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法基础</h1>
+                    <h1 class="description center-align post-title">贪心算法和动态规划</h1>
                 </div>
             </div>
         </div>
@@ -429,13 +429,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -447,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-01
+                    2021-04-05
                 </div>
                 
 
@@ -471,141 +467,91 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270261438">https://zhuanlan.zhihu.com/p/270261438</a></p>
+                <p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18x411V7">https://www.bilibili.com/video/BV18x411V7</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12W411v7rd">https://www.bilibili.com/video/BV12W411v7rd</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1i7411V7Zv">https://www.bilibili.com/video/BV1i7411V7Zv</a></p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><blockquote>
+<p>入门视频：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18x411V7fm">https://www.bilibili.com/video/BV18x411V7fm</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12W411v7rd">https://www.bilibili.com/video/BV12W411v7rd</a></p>
+<p>（动态规划的引入和概念）</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1i7411V7Zv">https://www.bilibili.com/video/BV1i7411V7Zv</a></p>
+<p>（了解动态规划和贪心算法的区别）</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14X4y1K7UA">https://www.bilibili.com/video/BV14X4y1K7UA</a></p>
+<p>（带着做一些题目,以及了解更多概念）</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NK4y1H7o8">https://www.bilibili.com/video/BV1NK4y1H7o8</a></p>
+<p>（进阶，背包问题）</p>
 </blockquote>
-<h3 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a><strong>深度优先遍历</strong>（DFS）</h3><p><strong><em>实现路径</em></strong></p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs%20tu.gif" alt="dfs tu"></p>
-<p><strong><em>代码思路</em></strong></p>
-<pre class="line-numbers language-none"><code class="language-none">DFS（顶点v）
-&#123;
-  标记v为已遍历；
-  for（对于每一个邻接v且未标记遍历的点u）
-      DFS（u）;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;详细
-void dfs(now)&#123;&#x2F;&#x2F;递归参数（每一个点）    &#x2F;&#x2F;层数
-	if(now&#x3D;&#x3D;n)&#123;&#x2F;&#x2F;到达终点             &#x2F;&#x2F;到达最底层
-       	终点处操作（记录答案&#x2F;输出答案...）
-        return;
-    &#125;
-    if(剪枝条件)return;
-    for(枚举状态)&#123;       &#x2F;&#x2F;每层有多少情况
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong><em>树的表示</em></strong></p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/1527982-20181120011713351-1312155079.png" alt="1527982-20181120011713351-1312155079"></p>
-<p><em>如果把多种情况写成一个树的方式</em></p>
-<p><em>那么DFS的实质就是遍历所有分枝来寻找最优解</em></p>
-<p><em>而DFS中遍历所有解的方式采用了我们称之为回溯法的东西</em></p>
-<p><strong><em>几个经典代码</em></strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;递归求全排列
-int a[3];
-int vis[3];
-void dfs(int now)&#123;
-	if(now&#x3D;&#x3D;4)&#123;
-		for (int i &#x3D; 0; i &lt; 3;i++)
-			cout &lt;&lt; a[i];
-		return;
-	&#125;
-	for (int i &#x3D; 1; i &lt;&#x3D; 3;i++)&#123;
-		if(vis[i])
-			continue;
-		a[now] &#x3D; i;
-		vis[i] &#x3D; 1;
-		dfs(now + 1);
-		vis[i] &#x3D; 0;
-	&#125;
-	return;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;八皇后
-int ans[10], vis[3][20];
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>斐波那契数列（记忆化搜索）</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210405153942.png" alt="image-20210405153942069"></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210405154015.png" alt="image-20210405154015672"></p>
+<p>对于任意的N来说，深度为n，每层有两种状态，复杂度为O（n^2）</p>
+<p>但是，我们发现有很多相同的<code>子问题</code></p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210405154254.png" alt="image-20210405154254105"></p>
+<p>于是，我们把每次计算的结果储存起来，下一次的计算，即调用上一次的结果，即O（1）的复杂度，一共N层的深度，即O(n)的复杂度</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210405154514.png" alt="image-20210405154513863"></p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>单元最短路径，最小生成树，哈夫曼编码</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>都是，含有“最优子结构”的问题</p>
+<p>贪心问题中，每个子问题都是独立的，通过每个子问题达到最优解，从而整个问题达到最优解</p>
+<p>动态规划中，每个子问题是相互包含的，每一个小的问题都是由次小的问题组成</p>
+<p>如下图：（太丑了？尽力了<img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210413194343.png" alt="img">）上面是贪心，下面是动态规划</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210413194058.png" alt="image-20210413194058396"></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1439">P1439 【模板】最长公共子序列</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">P1216 [USACO1.5][IOI1994]数字三角形 Number Triangles</a></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">递归dp
+&#x2F;&#x2F;int A &#x3D; re_opt(i + 1, j) + g[i][j];
+&#x2F;&#x2F;int B &#x3D; re_opt(i + 1, j + 1) + g[i][j];
+&#x2F;&#x2F;转移方程opt(i,j)&#x3D;max(A,B);
+&#x2F;&#x2F;
+int r;
+int g[1100][1100];
 
-void dfs(int now) &#123;
-	if(now &#x3D;&#x3D; 9) &#123;
-		for(int i &#x3D; 1; i &lt;&#x3D; 8; i++)	cout &lt;&lt; ans[i] &lt;&lt; &quot; &quot;;
-		cout &lt;&lt; &quot;\n&quot;;
-		return;
-	&#125;
-	for(int i &#x3D; 1; i &lt;&#x3D; 8; i++) &#123;
-		if(vis[0][i] || vis[1][now + i] || vis[2][now - i + 8])	continue;
-		ans[now] &#x3D; i;
-		vis[0][i] &#x3D; 1; vis[1][now + i] &#x3D; 1; vis[2][now - i + 8] &#x3D; 1;
-		dfs(now + 1);
-		vis[0][i] &#x3D; 0; vis[1][now + i] &#x3D; 0; vis[2][now - i + 8] &#x3D; 0;
-	&#125;
+int re_opt(int i,int j)&#123;
+    if(i&#x3D;&#x3D;r)
+        return g[r][j];
+    int A &#x3D; re_opt(i + 1, j) + g[i][j];
+    int B &#x3D; re_opt(i + 1, j + 1) + g[i][j];
+    return max(A, B);
 &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;迷宫问题
-#include&lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
 
-const int dx[4] &#x3D; &#123;0, 0, 1, -1&#125;, dy[4] &#x3D; &#123;1, -1, 0, 0&#125;;
-int n, m, t, sx, sy, fx, fy, ans &#x3D; 0;
-int mp[10][10] &#x3D; &#123;0&#125;, vis[10][10] &#x3D; &#123;0&#125;;
+int main()&#123;
+    cin &gt;&gt; r;
+    for (int i &#x3D; 1; i &lt;&#x3D; r;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; i;j++)
+            cin &gt;&gt; g[i][j];
+    &#125;
+    cout&lt;&lt;re_opt(1, 1);
+&#125;
+---------------------------------------------------------------------
+非递归，记忆
+int r;
+int g[1100][1100];
+int dp[1100][1100];
 
-void dfs(int nowx, int nowy) &#123;
-	if(nowx &#x3D;&#x3D; fx &amp;&amp; nowy &#x3D;&#x3D; fy) &#123;
-		ans++;
-		return;
-	&#125;
-	for(int i&#x3D;0;i&lt;4;i++) &#123;
-		int nx &#x3D; nowx + dx[i], ny &#x3D; nowy + dy[i];
-		if(nx &lt; 1 || nx &gt; n || ny &lt; 1 || ny &gt; m)	continue;
-		if(mp[nx][ny] || vis[nx][ny])	continue;
-		vis[nx][ny] &#x3D; 1;
-		dfs(nx, ny);
-		vis[nx][ny] &#x3D; 0;
-	&#125;
-&#125; 
+int main()&#123;
+    cin &gt;&gt; r;
+    for (int i &#x3D; 1; i &lt;&#x3D; r;i++)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; i;j++)
+            cin &gt;&gt; g[i][j];
+    &#125;
 
-int main() &#123;
-	cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
-	cin &gt;&gt; sx &gt;&gt; sy &gt;&gt; fx &gt;&gt; fy;
-	while(t--) &#123;
-		int x, y; cin &gt;&gt; x &gt;&gt; y;
-		mp[x][y] &#x3D; 1;
-	&#125;
-	vis[sx][sy] &#x3D; 1; 
-	dfs(sx, sy);
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;; 
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>==关于回溯解释==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/%E5%85%B3%E4%BA%8E%E5%9B%9E%E6%BA%AF.png" alt="关于回溯"></p>
-<p>在此图中，若每次标记完后，结束该路径不回溯，那么下次通过其他路径时，不会访问（如联通块染色问题，染过之后，不用重复染色），但是要想从不同的路径还能去访问此点，则需要回溯（如迷宫路线问题，全排列问题，八皇后问题）</p>
-<h3 id="广度优先算法（BFS）"><a href="#广度优先算法（BFS）" class="headerlink" title="广度优先算法（BFS）"></a>广度优先算法（BFS）</h3><p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs%20tu.gif" alt="bfs tu"></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;伪代码
-int n&#x3D;10,m&#x3D;10;
-void bfs()&#123;
-    queue que;
-    int graph[m][n];
-    int px[]&#x3D;&#123;1,-1,0,0&#125;;
-    int py[]&#x3D;&#123;0,0,1,-1&#125;;    
-    que.push(起点);
-    while(!que.empty())&#123;
-        auto temp&#x3D;que.front();&#x2F;&#x2F;得到队列中的元素
-        &#x2F;&#x2F;if(结束条件)
-        for(int i&#x3D;0;i!&#x3D;4;++i)&#123;
-            定义移动后的格子
-            if(&#x2F;&#x2F;可以走)     
-    &#x2F;&#x2F;没背标记过&amp;&amp;没有遇到障碍物（地图中标为1，因为从g[1][1]读，不用担心越界，默认标记为0）
-                
-               
-                &#x2F;&#x2F;标记当前格子
-                &#x2F;&#x2F;将当前状态入列，等待下次提取
+    for (int j &#x3D; 1; j &lt;&#x3D; r;j++)&#123;
+        dp[r][j] &#x3D; g[r][j];
+    &#125;
+    for (int i &#x3D; r - 1; i &gt;&#x3D; 1;i--)&#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; i;j++)&#123;
+            int A &#x3D; dp[i + 1][j] + g[i][j];
+            int B &#x3D; dp[i + 1][j + 1] + g[i][j];
+            dp[i][j] &#x3D; max(A, B);
         &#125;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-<h4 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h4><p>==DFS==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/dfs.gif" alt="dfs"></p>
-<p>==BFS==</p>
-<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/bfs.gif" alt="bfs"></p>
+    cout &lt;&lt; dp[1][1];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -632,7 +578,7 @@ void bfs()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">http://example.com/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</a>
+                    <a href="http://example.com/2021/04/05/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">http://example.com/2021/04/05/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -669,11 +615,7 @@ void bfs()&#123;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -847,13 +789,13 @@ void bfs()&#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/19/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+                <a href="/2021/04/05/%E4%BA%8C%E5%88%86%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="并查集">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="二分法">
                         
-                        <span class="card-title">并查集</span>
+                        <span class="card-title">二分法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -864,7 +806,7 @@ void bfs()&#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                         </span>
                         <span class="publish-author">
                             
@@ -873,14 +815,6 @@ void bfs()&#123;
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -892,13 +826,13 @@ void bfs()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                <a href="/2021/04/05/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="洛谷题单-字符串">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数学基础">
                         
-                        <span class="card-title">洛谷题单-字符串</span>
+                        <span class="card-title">数学基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -909,7 +843,7 @@ void bfs()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                             </span>
                         <span class="publish-author">
                             
@@ -918,18 +852,6 @@ void bfs()&#123;
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                        <span class="chip bg-color">洛谷</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
                 </div>
                 
             </div>

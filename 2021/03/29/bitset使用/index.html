@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="洛谷题单-字符串, 泡沫">
+    <meta name="keywords" content="泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>洛谷题单-字符串 | 泡沫</title>
+    <title>泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">洛谷题单-字符串</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -429,17 +429,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                <span class="chip bg-color">洛谷</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -451,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-14
+                    2021-03-29
                 </div>
                 
 
@@ -475,15 +467,78 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5733">P5733【深基6.例1】自动修正</a></p>
-<blockquote>
-<p>描述：输入一个长度不超过 100 且不包括空格的字符串。要求将该字符串中的所有小写字母变成大写字母并输出。</p>
-</blockquote>
-<ul>
-<li><p>简单字符处理</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1914">P1914小书童——凯撒密码</a></p>
-</li>
-</ul>
+                <h2 id="先来一点参考"><a href="#先来一点参考" class="headerlink" title="先来一点参考"></a>先来一点参考</h2><p><strong>放在最前面：!!! stoi并非标准库的函数，比赛中不要使用</strong></p>
+<h3 id="1、十进制和二进制相互转换"><a href="#1、十进制和二进制相互转换" class="headerlink" title="1、十进制和二进制相互转换"></a>1、十进制和二进制相互转换</h3><p>（1）十进制转二进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int a &#x3D; 10;
+bitset&lt;10&gt; bit(a);
+cout &lt;&lt; bit &lt;&lt; endl;&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：0000001010<br>（2）二进制转十进制</p>
+<p>     第一种方法：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">bitset&lt;10&gt; bit(&quot;010101&quot;);
+int a &#x3D; bit.to_ullong(); &#x2F;&#x2F;这里为unsigned long long
+cout &lt;&lt; a &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：21<br>    第二种方法： </p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string out &#x3D; &quot;0101&quot;;
+int x &#x3D; stoi(out, nullptr, 2);
+cout &lt;&lt; x &lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：5</p>
+<h3 id="2、字符串和二进制相互转换"><a href="#2、字符串和二进制相互转换" class="headerlink" title="2、字符串和二进制相互转换"></a>2、字符串和二进制相互转换</h3><p>（1）二进制转字符串</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">bitset&lt;10&gt; bit(&quot;010101&quot;);
+string str &#x3D; bit.to_string();
+cout &lt;&lt; str &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：0000010101<br>（2）字符串转二进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string str &#x3D; &quot;010101&quot;;
+bitset&lt;10&gt; bit(str);	
+cout &lt;&lt; bit &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：0000010101</p>
+<h3 id="3、字符串和十进制相互转换"><a href="#3、字符串和十进制相互转换" class="headerlink" title="3、字符串和十进制相互转换"></a>3、字符串和十进制相互转换</h3><p>（1）十进制转字符串</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int a &#x3D; 345;
+string str &#x3D; to_string(a);
+cout &lt;&lt;str &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：345<br>（2）字符串转十进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string str &#x3D; &quot;3456&quot;;
+int a &#x3D; stoi(str);
+cout &lt;&lt; a &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：3456</p>
+<h3 id="4、十进制和十六进制相互转换"><a href="#4、十进制和十六进制相互转换" class="headerlink" title="4、十进制和十六进制相互转换"></a>4、十进制和十六进制相互转换</h3><p>（1）十六进制转十进制</p>
+<p>    第一种方法：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;sstream&gt;
+
+int x;
+stringstream ss;
+ss &lt;&lt; std::hex &lt;&lt; &quot;1A&quot;;  &#x2F;&#x2F;std::oct（八进制）、std::dec（十进制）
+ss &gt;&gt; x;
+cout &lt;&lt; x&lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：26<br>    第二种方法：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string out &#x3D; &quot;1A&quot;;
+int x &#x3D; stoi(out, nullptr, 16);
+cout &lt;&lt; x &lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：26<br> （2）十进制转十六进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int x &#x3D; 26 ;
+string out;
+stringstream ss;
+ss &lt;&lt; std::hex &lt;&lt;x;
+ss &gt;&gt; out ;
+transform(out.begin(), out.end(), out.begin(), ::toupper);
+cout &lt;&lt; out &lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：1A</p>
+<h3 id="5、二进制和十六进制"><a href="#5、二进制和十六进制" class="headerlink" title="5、二进制和十六进制"></a>5、二进制和十六进制</h3><p>（1）二进制转十六进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string binary &#x3D; &quot;11010101&quot;;
+string hex;
+stringstream ss;
+ss &lt;&lt; std::hex &lt;&lt; stoi(binary, nullptr, 2);
+ss &gt;&gt; hex;
+transform(hex.begin(), hex.end(), hex.begin(), ::toupper);
+cout &lt;&lt; hex &lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：D5<br>（2）十六进制转二进制</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">string binary &#x3D; &quot;D5&quot;;
+bitset&lt;8&gt; bit(stoi(binary, nullptr, 16));
+cout &lt;&lt; bit &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出：11010101</p>
+<p>————————————————</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/MOU_IT/article/details/89060249">https://blog.csdn.net/MOU_IT/article/details/89060249</a></p>
+<h2 id="以下是正文"><a href="#以下是正文" class="headerlink" title="以下是正文"></a>以下是正文</h2><p>bitset最简单的使用：</p>
+<p>将十进制转换为二进制，将二进制转换为十进制</p>
 
                 
             </div>
@@ -510,7 +565,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/</a>
+                    <a href="http://example.com/2021/03/29/bitset%E4%BD%BF%E7%94%A8/">http://example.com/2021/03/29/bitset%E4%BD%BF%E7%94%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,15 +602,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                    <span class="chip bg-color">洛谷</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -729,13 +776,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89/">
+                <a href="/2021/03/30/%E7%BB%86%E8%8A%82%E5%8C%96%E7%9A%84%E8%AF%BB%E5%85%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="算法基础(搜索)">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="细节化的读入">
                         
-                        <span class="card-title">算法基础(搜索)</span>
+                        <span class="card-title">细节化的读入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -746,7 +793,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
                         </span>
                         <span class="publish-author">
                             
@@ -755,14 +802,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -774,13 +813,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/13/C++%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/03/29/EOF%E8%A7%A3%E6%9E%90/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="C++基础">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="EOF解析">
                         
-                        <span class="card-title">C++基础</span>
+                        <span class="card-title">EOF解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,7 +830,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-29
                             </span>
                         <span class="publish-author">
                             
@@ -804,8 +843,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">-底层原理</span>
                     </a>
                     
                 </div>

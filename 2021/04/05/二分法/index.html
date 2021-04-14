@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="洛谷题单-字符串, 泡沫">
+    <meta name="keywords" content="二分法, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>洛谷题单-字符串 | 泡沫</title>
+    <title>二分法 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">洛谷题单-字符串</h1>
+                    <h1 class="description center-align post-title">二分法</h1>
                 </div>
             </div>
         </div>
@@ -429,17 +429,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                <span class="chip bg-color">洛谷</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -451,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-14
+                    2021-04-05
                 </div>
                 
 
@@ -475,15 +467,72 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5733">P5733【深基6.例1】自动修正</a></p>
+                <p><a target="_blank" rel="noopener" href="http://oj.ecustacm.cn/problem.php?id=1464">[蓝桥杯2019初赛]数的分解</a></p>
+<p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/13276/B">Wiki with Building Matches</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678">[NOIP2015 提高组] 跳石头</a></p>
+<p><a target="_blank" rel="noopener" href="http://oj.ecustacm.cn/problem.php?id=1100">阶乘末尾0的个数(二)</a>（蓝桥有一道<a target="_blank" rel="noopener" href="http://oj.ecustacm.cn/problem.php?id=1361">乘积尾零</a>这题，找规律的题目，可以看看这个，来找找思路(check条件),当然，这题的条件还是比较难找，还有证明)</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;例子，[)左闭右开的情况 11110000
+bool check(int id)&#123;
+if(w[id]&lt;a)
+	return 1;
+	return 0;
+&#125;
+void work1()&#123;
+	int ls&#x3D;1，rs&#x3D;n+1;&#x2F;&#x2F;若是左开右闭，则ls&#x3D;-1,re&#x3D;n
+    while(ls+1&lt;rs)&#123;
+		int mid&#x3D;(ls+rs)&#x2F;2;
+        if(!check(mid))rs&#x3D;mid;
+        else ls&#x3D;mid;
+    &#125;
+    cout&lt;&lt;w[ls];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>最大值最小，最小值最大问题</p>
+<p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210406200100.png" alt="image-20210406200053442"></p>
 <blockquote>
-<p>描述：输入一个长度不超过 100 且不包括空格的字符串。要求将该字符串中的所有小写字母变成大写字母并输出。</p>
-</blockquote>
-<ul>
-<li><p>简单字符处理</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1914">P1914小书童——凯撒密码</a></p>
+<ol>
+<li><p>一般，先假设最大值是X，来找判断出条件（即第二点）</p>
 </li>
-</ul>
+<li><p>还要看X-1是否也合法（比最大值小的数，也满足条件）</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><hr>
+<h4 id="阶乘末尾0的个数-二"><a href="#阶乘末尾0的个数-二" class="headerlink" title="阶乘末尾0的个数(二)"></a><a target="_blank" rel="noopener" href="http://oj.ecustacm.cn/problem.php?id=1100">阶乘末尾0的个数(二)</a></h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int INF &#x3D; 0x3f3f3f3f;
+int q;
+int ls&#x3D;-1, rs&#x3D;INF;
+int num_5(int n)&#123;
+    int re &#x3D; 0;
+    while(n)&#123;
+        re +&#x3D; n &#x2F; 5;
+        n &#x2F;&#x3D;5;
+    &#125;
+    return re;
+&#125;
+
+int check(int n)&#123;
+    if(num_5(n)&gt;&#x3D;q)
+        return 1;
+    return 0;
+&#125; 
+
+int main()&#123;
+    cin &gt;&gt; q;
+    while(rs-ls&gt;1)&#123;
+        int mid &#x3D; (rs + ls) &#x2F; 2;
+        if(check(mid))&#123;
+            rs &#x3D; mid;
+        &#125;
+        else&#123;
+            ls &#x3D; mid;
+        &#125;
+    &#125;
+    if(num_5(rs)!&#x3D;q)
+        cout &lt;&lt; &quot;No solution&quot;;
+        else
+    cout &lt;&lt; rs;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -510,7 +559,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">http://example.com/2021/02/14/%E6%B4%9B%E8%B0%B7%E9%A2%98%E5%8D%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/</a>
+                    <a href="http://example.com/2021/04/05/%E4%BA%8C%E5%88%86%E6%B3%95/">http://example.com/2021/04/05/%E4%BA%8C%E5%88%86%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,15 +596,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%B4%9B%E8%B0%B7/">
-                                    <span class="chip bg-color">洛谷</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -729,13 +770,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/01/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%EF%BC%88%E6%90%9C%E7%B4%A2%EF%BC%89/">
+                <a href="/2021/04/10/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%B8%B8%E9%87%8F/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="算法基础(搜索)">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="算法比赛中的无穷大常量">
                         
-                        <span class="card-title">算法基础(搜索)</span>
+                        <span class="card-title">算法比赛中的无穷大常量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -746,7 +787,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
                         </span>
                         <span class="publish-author">
                             
@@ -755,14 +796,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -774,13 +807,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/13/C++%E5%9F%BA%E7%A1%80/">
+                <a href="/2021/04/05/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="C++基础">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="贪心算法和动态规划">
                         
-                        <span class="card-title">C++基础</span>
+                        <span class="card-title">贪心算法和动态规划</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,7 +824,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                             </span>
                         <span class="publish-author">
                             
@@ -800,14 +833,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
                 </div>
                 
             </div>
