@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法比赛中的无穷大常量, 泡沫">
+    <meta name="keywords" content="排序, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法比赛中的无穷大常量 | 泡沫</title>
+    <title>排序 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法比赛中的无穷大常量</h1>
+                    <h1 class="description center-align post-title">排序</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-10
+                    2021-05-19
                 </div>
                 
 
@@ -467,15 +467,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在算法竞赛中，我们常常需要用到设置一个常量用来代表“<strong>无穷大</strong>”。</p>
-<p>比如对于int类型的数，有的人会采用INT_MAX，即0x7fffffff作为无穷大。但是以INT_MAX为无穷大常常面临一个问题，即加一个其他的数会溢出。</p>
-<p>而这种情况在动态规划，或者其他一些递推的算法中常常出现，很有可能导致算法出问题。</p>
-<p>所以在算法竞赛中，我们常采用0x3f3f3f3f来作为无穷大。0x3f3f3f3f主要有如下好处：</p>
-<blockquote>
-<p>0x3f3f3f3f的十进制为1061109567，和INT_MAX一个数量级，即10^9数量级，而一般场合下的数据都是小于10^9的。<br>0x3f3f3f3f * 2 = 2122219134，无穷大相加依然不会溢出。</p>
-</blockquote>
-<p><strong>可以使用memset(array, 0x3f, sizeof(array))来为数组设初值为0x3f3f3f3f，因为这个数的每个字节都是0x3f。</strong></p>
-<p>另附<br>无穷小： 0xc0c0c0c0 十进制： -1061109568</p>
+                <p><img src="https://gitee.com/GrittyB/personal-drawing-bed/raw/master/20210519161932.png" alt="image-20210519161831766"></p>
+<p>排序使用频率（依次递减）</p>
+<p>主要使用sort函数，下面的排序重点在思想</p>
+<p>视频推荐：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JA411j7ex/">https://www.bilibili.com/video/BV1JA411j7ex/</a></p>
+<p>重点（sort的使用）<a target="_blank" rel="noopener" href="http://rbook.roj.ac.cn/article/dfd75bfcfb">http://rbook.roj.ac.cn/article/dfd75bfcfb</a></p>
+<p>练习题：</p>
+<ul>
+<li>[NOIP2007 奖学金]</li>
+<li>[NOIP2007 统计数字]</li>
+<li>[列队]</li>
+<li>[找第 k 小的数]</li>
+<li>[明明的随机数]</li>
+<li>luogu P1116 车厢重组</li>
+<li>luogu P1309 瑞士轮</li>
+<li>luogu P1626 象棋比赛</li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/2528">排序工作量之新任务</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/1774">最接近神的人_NOI 导刊 2010 提高</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/1966">火柴排队</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/1908">luogu P1908 逆序对</a></li>
+<li>P1116 车厢重组 冒泡 or 归并排序</li>
+<li>P1138 第 k 小整数 入门难度</li>
+<li>P1059 明明的随机数 NOIp 普及组 2006 入门难度</li>
+<li>P1296 奶牛的耳语 入门难度</li>
+<li>P1469 找筷子 入门难度</li>
+<li>P1152 欢乐的跳</li>
+</ul>
 
                 
             </div>
@@ -502,7 +519,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/10/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%B8%B8%E9%87%8F/">http://example.com/2021/04/10/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%B8%B8%E9%87%8F/</a>
+                    <a href="http://example.com/2021/05/19/%E6%8E%92%E5%BA%8F/">http://example.com/2021/05/19/%E6%8E%92%E5%BA%8F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -713,13 +730,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/16/%E5%9B%BE%E5%92%8C%E6%A0%91/">
+                <a href="/2021/05/21/%E8%B4%AA%E5%BF%83/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="图和树">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="贪心">
                         
-                        <span class="card-title">图和树</span>
+                        <span class="card-title">贪心</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -730,7 +747,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                         </span>
                         <span class="publish-author">
                             
@@ -750,13 +767,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/05/%E4%BA%8C%E5%88%86%E6%B3%95/">
+                <a href="/2021/04/28/%E9%93%BE%E8%A1%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="二分法">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="链表">
                         
-                        <span class="card-title">二分法</span>
+                        <span class="card-title">链表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,7 +784,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-28
                             </span>
                         <span class="publish-author">
                             

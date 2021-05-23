@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="算法比赛中的无穷大常量, 泡沫">
+    <meta name="keywords" content="链表, 泡沫">
     <meta name="description" content="一路前行，勿滋烦恼，看春花秋月，自是人间好时节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>算法比赛中的无穷大常量 | 泡沫</title>
+    <title>链表 | 泡沫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">算法比赛中的无穷大常量</h1>
+                    <h1 class="description center-align post-title">链表</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-10
+                    2021-04-28
                 </div>
                 
 
@@ -467,15 +467,151 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在算法竞赛中，我们常常需要用到设置一个常量用来代表“<strong>无穷大</strong>”。</p>
-<p>比如对于int类型的数，有的人会采用INT_MAX，即0x7fffffff作为无穷大。但是以INT_MAX为无穷大常常面临一个问题，即加一个其他的数会溢出。</p>
-<p>而这种情况在动态规划，或者其他一些递推的算法中常常出现，很有可能导致算法出问题。</p>
-<p>所以在算法竞赛中，我们常采用0x3f3f3f3f来作为无穷大。0x3f3f3f3f主要有如下好处：</p>
-<blockquote>
-<p>0x3f3f3f3f的十进制为1061109567，和INT_MAX一个数量级，即10^9数量级，而一般场合下的数据都是小于10^9的。<br>0x3f3f3f3f * 2 = 2122219134，无穷大相加依然不会溢出。</p>
-</blockquote>
-<p><strong>可以使用memset(array, 0x3f, sizeof(array))来为数组设初值为0x3f3f3f3f，因为这个数的每个字节都是0x3f。</strong></p>
-<p>另附<br>无穷小： 0xc0c0c0c0 十进制： -1061109568</p>
+                <p>模板</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;algorithm&gt;
+#include &lt;bitset&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include&lt;cmath&gt;
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+class Node&#123;
+    public:
+    int data;
+    Node *next;
+&#125;;
+
+class LinkList&#123;
+    private:
+        Node *head;
+    public:
+        void createlinklist(int size);
+        int GetLen();
+        void showlinklist();
+        void head_insert(int data);
+        void end_insert(int data);
+        void pos_insert(int data,int n);
+        Node *Find(int data);
+        LinkList();
+        ~LinkList();
+&#125;;
+
+LinkList::LinkList()&#123;
+    head &#x3D; new Node;
+    head-&gt;data &#x3D; 0;
+    head-&gt;next &#x3D; nullptr;      
+&#125;;
+
+LinkList::~LinkList()&#123;
+    delete head;
+&#125;;
+&#x2F;&#x2F;获取链表长度
+int LinkList::GetLen()&#123;
+    int size &#x3D; 0;
+    Node *p &#x3D; head-&gt;next;
+    while(p!&#x3D;nullptr)&#123;
+        size++;
+        p &#x3D; p-&gt;next;
+    &#125;
+    return size;
+&#125;;
+&#x2F;&#x2F;创建链表
+void LinkList::createlinklist(int size)&#123;
+    Node *pnew, *ptemp;
+    ptemp &#x3D; head;
+    if(size&lt;0)&#123;
+        cout &lt;&lt; &quot;wrong&quot; &lt;&lt; endl;
+        exit(-1);
+    &#125;
+    for(int i&#x3D;0;i&lt;size;i++)&#123;
+        pnew &#x3D; new Node;
+        cout &lt;&lt; &quot;请输入第&quot; &lt;&lt; i + 1 &lt;&lt; &quot;个元素的值&quot; &lt;&lt; endl;
+        cin &gt;&gt; pnew-&gt;data;
+        ptemp-&gt;next &#x3D; pnew;
+        ptemp &#x3D; pnew;
+    &#125;
+    
+&#125;
+&#x2F;&#x2F;遍历链表
+void LinkList::showlinklist()&#123;
+    if(head&#x3D;&#x3D;nullptr&amp;&amp;head-&gt;next&#x3D;&#x3D;nullptr)&#123;
+        cout &lt;&lt; &quot;空表&quot; &lt;&lt; endl;
+    &#125;
+    Node *p &#x3D; head;
+    while (p-&gt;next!&#x3D;nullptr)
+    &#123;
+        p &#x3D; p-&gt;next;
+        cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+    &#125;
+&#125;
+&#x2F;&#x2F;查找元素
+Node*LinkList::Find(int data)&#123;
+    Node *p &#x3D; head;
+    if(p&#x3D;&#x3D;nullptr)&#123;
+        cout &lt;&lt; &quot;空表&quot; &lt;&lt; endl;
+        return nullptr;
+    &#125;
+    else&#123;
+        &#x2F;&#x2F; while(p-&gt;next!&#x3D;nullptr)&#123;
+        &#x2F;&#x2F;     if(p-&gt;data&#x3D;&#x3D;data)&#123;
+        &#x2F;&#x2F;         return p;
+        &#x2F;&#x2F;     &#125;
+        &#x2F;&#x2F;     p &#x3D; p-&gt;next;
+        &#x2F;&#x2F; &#125;
+        do&#123;
+            p &#x3D; p-&gt;next;
+            if(p-&gt;data&#x3D;&#x3D;data)&#123;
+                return p;
+            &#125;
+        &#125; while (p-&gt;next !&#x3D; nullptr);
+    &#125;
+        return nullptr;
+&#125;
+&#x2F;&#x2F;头插法
+void LinkList::head_insert(int data)&#123;
+    Node *newnode &#x3D; new Node;
+    newnode-&gt;data &#x3D; data;
+    if(head&#x3D;&#x3D;nullptr)&#123;
+        head &#x3D; newnode;
+    &#125;
+    &#x2F;&#x2F;Node *p &#x3D; head;
+    newnode-&gt;next &#x3D; head-&gt;next;
+    head-&gt;next &#x3D; newnode;
+&#125;
+&#x2F;&#x2F;尾插法
+void LinkList::end_insert(int data)&#123;
+    Node *newnode &#x3D; new Node;
+    newnode-&gt;data &#x3D; data;
+    &#x2F;&#x2F;newnode-&gt;next &#x3D; nullptr;
+    Node *p &#x3D; head;
+    if(head&#x3D;&#x3D;nullptr)
+        head &#x3D; newnode;
+    else&#123;
+        while(p-&gt;next!&#x3D;nullptr)
+            p &#x3D; p-&gt;next;
+        p-&gt;next &#x3D; newnode;
+    &#125;
+&#125;
+&#x2F;&#x2F;任意位置插入
+void LinkList::pos_insert(int data,int n)&#123;
+    if(n&lt;1||n&gt;GetLen())&#123;
+        cout &lt;&lt; &quot;Wrong&quot; &lt;&lt; endl;
+    &#125;
+    else&#123;
+                
+    &#125;
+&#125;
+
+int main()&#123;
+    
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -502,7 +638,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/10/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%B8%B8%E9%87%8F/">http://example.com/2021/04/10/%E7%AE%97%E6%B3%95%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9A%84%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%B8%B8%E9%87%8F/</a>
+                    <a href="http://example.com/2021/04/28/%E9%93%BE%E8%A1%A8/">http://example.com/2021/04/28/%E9%93%BE%E8%A1%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -713,13 +849,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/16/%E5%9B%BE%E5%92%8C%E6%A0%91/">
+                <a href="/2021/05/19/%E6%8E%92%E5%BA%8F/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="图和树">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="排序">
                         
-                        <span class="card-title">图和树</span>
+                        <span class="card-title">排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -730,7 +866,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-19
                         </span>
                         <span class="publish-author">
                             
@@ -750,13 +886,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/05/%E4%BA%8C%E5%88%86%E6%B3%95/">
+                <a href="/2021/04/16/%E5%9B%BE%E5%92%8C%E6%A0%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="二分法">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="图和树">
                         
-                        <span class="card-title">二分法</span>
+                        <span class="card-title">图和树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,7 +903,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
                             </span>
                         <span class="publish-author">
                             
