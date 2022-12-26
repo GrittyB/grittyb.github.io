@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Grittyb&#39;s blog</title>
-        <link>http://grittyb.github.io/posts/</link>
+        <link>https://blog.grittyb.xyz/posts/</link>
         <description>All Posts | Grittyb&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Dec 2022 23:27:38 &#43;0800</lastBuildDate><atom:link href="http://grittyb.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Dec 2022 23:27:38 &#43;0800</lastBuildDate><atom:link href="https://blog.grittyb.xyz/posts/" rel="self" type="application/rss+xml" /><item>
     <title>My First Post</title>
-    <link>http://grittyb.github.io/posts/my-first-post/</link>
+    <link>https://blog.grittyb.xyz/posts/my-first-post/</link>
     <pubDate>Sun, 25 Dec 2022 23:27:38 &#43;0800</pubDate>
     <author>Grittyb</author>
-    <guid>http://grittyb.github.io/posts/my-first-post/</guid>
+    <guid>https://blog.grittyb.xyz/posts/my-first-post/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
